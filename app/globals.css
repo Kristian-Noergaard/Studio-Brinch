@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand palette — from the Studio Brinch design handoff */
+  --color-cream: #f7f5ef; /* page background, light sections, text on dark */
+  --color-offwhite: #fdfcf9; /* cards */
+  --color-beige-light: #ede8db;
+  --color-beige: #ddd8cc; /* section bands */
+  --color-brown: #605d54; /* dark band, footer, primary button */
+  --color-brown-hover: #6a675d;
+  --color-ink: #2a2822; /* near-black text / dark buttons */
+  --color-olive: #3a382f; /* nav links scrolled, image placeholders */
+  --color-body: #55524a; /* body text gray-brown */
+  --color-accent: #6f4234; /* overlines, numerals, links, rules */
+  --color-rose: #c9a78f; /* accent on dark backgrounds */
+  --color-hairline: #c9c2ae;
+  --color-hairline-dark: #b4ac95;
+  --color-hairline-light: #e6e0d1;
+  --color-muted: #8b8574; /* review timestamps */
+  --color-star: #e8a33d;
+
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-jost);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-jost), sans-serif;
+}
