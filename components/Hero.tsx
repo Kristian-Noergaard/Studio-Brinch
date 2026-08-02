@@ -37,7 +37,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="relative h-screen min-h-[700px] overflow-hidden bg-olive">
+    <div className="relative h-[68svh] min-h-[540px] overflow-hidden bg-olive md:h-screen md:min-h-[700px]">
       <div className="absolute inset-0">
         {SLIDES.map((src, i) => (
           <div
@@ -56,7 +56,7 @@ export default function Hero() {
       />
       <div
         ref={fadeRef}
-        className="absolute left-6 right-6 bottom-44 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24"
+        className="absolute left-6 right-6 bottom-40 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24"
       >
         <div className="-mb-3.5 font-sans text-[13px] md:text-[14px] tracking-[5px]">
           INDRETNINGSARKITEKTUR &amp; INTERIØRDESIGN
