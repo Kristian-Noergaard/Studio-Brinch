@@ -14,7 +14,7 @@ export default function Overline({
   return (
     <div className={`flex items-center gap-[18px] ${className}`}>
       {rule}
-      <div className="text-[14px] tracking-[5px]" style={{ color }}>
+      <div className="font-sans text-[14px] tracking-[5px]" style={{ color }}>
         {label}
       </div>
       {centered && rule}

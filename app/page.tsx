@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import PageEffects from "@/components/PageEffects";
 import Hero from "@/components/Hero";
 import ProcessSection from "@/components/ProcessSection";
 import PortfolioSection from "@/components/PortfolioSection";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="bg-cream text-ink">
+      <PageEffects />
       <Header />
       <Hero />
       <ProcessSection />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const SLIDES = [
@@ -13,6 +13,7 @@ const SLIDE_INTERVAL_MS = 5000;
 
 export default function Hero() {
   const [idx, setIdx] = useState(0);
+  const fadeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const t = setInterval(
@@ -20,6 +21,19 @@ export default function Hero() {
       SLIDE_INTERVAL_MS
     );
     return () => clearInterval(t);
+  }, []);
+
+  // Heading block fades and drifts up as the page scrolls
+  useEffect(() => {
+    const onScroll = () => {
+      const el = fadeRef.current;
+      if (!el) return;
+      const p = Math.min(window.scrollY / (window.innerHeight * 0.7), 1);
+      el.style.opacity = (1 - p * 0.95).toFixed(3);
+      el.style.translate = `0 ${(-p * 40).toFixed(1)}px`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -37,27 +51,30 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(20,18,14,0.35) 0%, rgba(20,18,14,0.05) 35%, rgba(20,18,14,0.30) 100%)",
+            "linear-gradient(90deg, rgba(20,18,14,0.55) 0%, rgba(20,18,14,0.15) 55%, rgba(20,18,14,0.05) 100%), linear-gradient(180deg, rgba(20,18,14,0.25), transparent 30%), linear-gradient(0deg, rgba(20,18,14,0.55), transparent 45%)",
         }}
       />
-      <div className="absolute left-0 right-0 bottom-24 flex flex-col items-center gap-7 px-6 text-center text-cream">
-        <div className="-mb-3.5 text-[13px] md:text-[15px] tracking-[5px]">
+      <div
+        ref={fadeRef}
+        className="absolute left-6 right-6 bottom-44 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24"
+      >
+        <div className="-mb-3.5 font-sans text-[13px] md:text-[14px] tracking-[5px]">
           INDRETNINGSARKITEKTUR &amp; INTERIØRDESIGN
         </div>
         <h1
-          className="m-0 max-w-[1000px] font-serif italic font-normal text-[36px] md:text-[58px] leading-[1.2]"
+          className="m-0 font-serif italic font-normal text-[34px] md:text-[48px] leading-[1.15]"
           style={{ textWrap: "pretty" }}
         >
           Indretningsarkitekt og interiør design med speciale i renovering og
           nybyg
         </h1>
-        <Link
-          href="/projekter"
-          className="border border-cream/70 px-10 py-4 text-[14px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 hover:text-white"
-        >
-          SE VORES PROJEKTER
-        </Link>
       </div>
+      <Link
+        href="/projekter"
+        className="absolute left-6 bottom-24 md:left-auto md:right-16 md:bottom-24 border border-cream px-10 py-4 font-sans text-[14px] tracking-[3px] text-cream transition-colors hover:bg-cream/15"
+      >
+        SE VORES PROJEKTER
+      </Link>
       <div className="absolute bottom-9 left-0 right-0 flex justify-center gap-2.5">
         {SLIDES.map((_, i) => (
           <div

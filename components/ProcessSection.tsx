@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Overline from "./Overline";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 
 const CARD_SHADOW = "0 2px 20px rgba(42,40,34,0.06)";
+const CARD_TEXT_BG = "#DDD8CC78";
 
 function Card({
   image,
@@ -19,11 +19,14 @@ function Card({
 }) {
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-[14px] bg-offwhite"
+      className="flex flex-col overflow-hidden bg-offwhite"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <div className="relative">{image}</div>
-      <div className="flex flex-1 flex-col gap-3.5 px-9 pt-9 pb-10 text-center">
+      <div
+        className="flex flex-1 flex-col gap-3.5 px-9 pt-9 pb-10 text-center"
+        style={{ background: CARD_TEXT_BG }}
+      >
         <h3 className="m-0 min-h-[34px] font-serif text-[26px] font-medium text-ink">
           {title}
         </h3>
@@ -46,32 +49,46 @@ function Card({
 
 export default function ProcessSection() {
   return (
-    <div className="bg-beige px-6 py-24 md:px-16 md:py-[120px]">
-      <div className="mx-auto mb-12 flex max-w-[1240px] flex-col items-center text-center">
-        <Overline label="VORES PROCES" centered className="mb-3.5" />
-        <h2
-          className="m-0 mb-[26px] max-w-[640px] font-serif text-[36px] font-medium leading-[1.15] text-ink md:text-[50px]"
-          style={{ textWrap: "pretty" }}
-        >
-          Et samarbejde i øjenhøjde
-          <br />— fra idé til færdigt hjem
-        </h2>
-        <p
-          className="m-0 mb-10 max-w-[760px] text-[18px] font-light leading-[1.7] text-body"
-          style={{ textWrap: "pretty" }}
-        >
-          Vi starter med en{" "}
-          <strong className="font-medium text-ink">uforpligtende snak</strong>,
-          lytter til jeres ønsker og former et designforløb, der passer til jer.
-          Processen er enkel, tryg og bygget på ærlig rådgivning og
-          gennemsigtighed.
-        </p>
+    <div
+      className="bg-beige px-6 py-24 md:px-16 md:py-[120px]"
+      data-reveal
+      data-sec="proces"
+    >
+      <div className="mx-auto mb-14 grid max-w-[1320px] grid-cols-1 items-center justify-center gap-8 lg:grid-cols-[auto_auto] lg:gap-12">
+        <div className="text-left">
+          <h2
+            className="m-0 max-w-[640px] font-serif text-[36px] font-medium leading-[1.15] text-ink md:text-[50px]"
+            style={{ textWrap: "pretty" }}
+          >
+            <span className="om-w1">Et samarbejde i øjenhøjde</span>
+            <br />
+            <span className="om-w2">fra idé til færdigt hjem</span>
+          </h2>
+        </div>
+        <div className="max-w-[480px] lg:justify-self-start">
+          <div className="om-w2 mb-3.5 flex items-center gap-[18px]">
+            <div className="font-sans text-[14px] tracking-[5px] text-accent">
+              VORES PROCES
+            </div>
+            <div className="h-px flex-1 bg-accent" />
+          </div>
+          <p
+            className="om-v3 om-words m-0 text-left text-[18px] font-light leading-[1.7] text-body"
+            style={{ textWrap: "pretty" }}
+          >
+            Vi starter med en{" "}
+            <strong className="font-medium text-ink">uforpligtende snak</strong>
+            , lytter til jeres ønsker og former et designforløb, der passer til
+            jer. Processen er enkel, tryg og bygget på ærlig rådgivning og
+            gennemsigtighed.
+          </p>
+        </div>
       </div>
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-7 lg:grid-cols-3">
+      <div className="reveal-grid mx-auto grid max-w-[1320px] grid-cols-1 gap-7 lg:grid-cols-3">
         <Card
           image={
             <div
-              className="h-[280px] rounded-t-[14px] bg-beige bg-cover bg-no-repeat"
+              className="h-[280px] bg-beige bg-cover bg-no-repeat"
               style={{
                 backgroundImage: "url('/assets/om_studio.webp')",
                 backgroundPosition: "62% 30%",
@@ -88,7 +105,7 @@ export default function ProcessSection() {
         <Card
           image={
             <div
-              className="h-[280px] rounded-t-[14px] bg-beige bg-cover bg-no-repeat"
+              className="h-[280px] bg-beige bg-cover bg-no-repeat"
               style={{
                 backgroundImage: "url('/assets/box_koekken.png')",
                 backgroundPosition: "center 45%",
@@ -99,7 +116,7 @@ export default function ProcessSection() {
           }
           title="Inspiration til din indretning"
           body="Hos Studio Brinch inspirerer vi gennem hele processen lige fra din plantegning til alle efterfølgende designvalg af materialer, farver, møbler og indretning. Med et sammenhængende design koncept skabes et unikt oplæg til dit hjem, hvor hvert rum tager udgangspunkt i din stilart, livsstil og behov."
-          ctaLabel="Inspiration"
+          ctaLabel="Portfolio"
           ctaHref="/projekter"
         />
         <Card
@@ -107,16 +124,16 @@ export default function ProcessSection() {
             <BeforeAfterSlider
               before="/assets/box_stue_empty.png"
               after="/assets/box_stue.png"
-              label="Før og efter — projektstyring fra start til slut"
+              label="Før og efter, projektstyring fra start til slut"
             />
           }
           title="Projektstyring fra start til slut"
           body="Hvad end du står overfor nybyg, renovering, ombygning, tilbygning eller indflytning, så kan Studio Brinch komme med den inspiration der gør dit hjem unikt og vi kan hjælpe lige fra opstarten til implementeringen af dit boligprojekt."
-          ctaLabel="Kontakt os"
-          ctaHref="/kontakt"
+          ctaLabel="Services"
+          ctaHref="/ydelser"
         />
       </div>
-      <div className="mx-auto mt-20 flex max-w-[1240px] flex-col items-center text-center">
+      <div className="mx-auto -mb-[30px] mt-[60px] flex max-w-[1240px] flex-col items-center text-center">
         <Link
           href="/kontakt"
           className="inline-flex items-center gap-3 text-[17px] font-medium text-accent hover:text-olive"

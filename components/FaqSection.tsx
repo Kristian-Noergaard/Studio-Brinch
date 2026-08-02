@@ -6,23 +6,23 @@ import Overline from "./Overline";
 const FAQS = [
   {
     q: "Hvad koster det at samarbejde med Studio Brinch?",
-    a: "Prisen afhænger af projektets omfang — fra et enkelt rådgivningsbesøg til et komplet forløb med renovering eller nybyg. Vi starter altid med en uforpligtende samtale, hvor vi afstemmer ønsker og budget, og du får et fast tilbud, inden vi går i gang.",
+    a: "Prisen afhænger af projektets omfang, fra et enkelt rådgivningsbesøg til et komplet forløb med renovering eller nybyg. Vi starter altid med en uforpligtende samtale, hvor vi afstemmer ønsker og budget, og du får et fast tilbud, inden vi går i gang.",
   },
   {
     q: "Hvordan foregår det første møde?",
-    a: "Vi mødes hjemme hos jer eller online. Her taler vi om jeres bolig, hverdag, stilart og drømme — og I får en klar fornemmelse af, hvordan et forløb kunne se ud for netop jeres projekt. Mødet er helt uforpligtende.",
+    a: "Vi mødes hjemme hos jer eller online. Her taler vi om jeres bolig, hverdag, stilart og drømme, og I får en klar fornemmelse af, hvordan et forløb kunne se ud for netop jeres projekt. Mødet er helt uforpligtende.",
   },
   {
     q: "Arbejder I både med renovering og nybyg?",
-    a: "Ja. Vi har speciale i begge dele — fra totalrenovering af eksisterende boliger til indretning og materialevalg i nybyggeri, hvor vi gerne kommer med allerede i plantegningsfasen.",
+    a: "Ja. Vi har speciale i begge dele, fra totalrenovering af eksisterende boliger til indretning og materialevalg i nybyggeri, hvor vi gerne kommer med allerede i plantegningsfasen.",
   },
   {
     q: "Hjælper I også med håndværkere og leverandører?",
-    a: "Ja, vi kan styre projektet fra start til slut og holder den løbende dialog med håndværkere og leverandører, så designet bliver ført ud i livet som aftalt — og I kan bruge tiden på alt det andet.",
+    a: "Ja, vi kan styre projektet fra start til slut og holder den løbende dialog med håndværkere og leverandører, så designet bliver ført ud i livet som aftalt, og I kan bruge tiden på alt det andet.",
   },
   {
     q: "Hvor i landet arbejder I?",
-    a: "Vi holder til i Kolding og arbejder primært i Trekantområdet og det øvrige Jylland — men tag endelig kontakt, hvis I bor længere væk. Online rådgivning er også en mulighed.",
+    a: "Vi holder til i Kolding og arbejder primært i Trekantområdet og det øvrige Jylland, men tag endelig kontakt, hvis I bor længere væk. Online rådgivning er også en mulighed.",
   },
 ];
 
@@ -30,19 +30,23 @@ export default function FaqSection() {
   const [open, setOpen] = useState(0);
 
   return (
-    <div className="bg-cream px-6 py-24 md:px-16 md:pt-[120px] md:pb-[130px]">
-      <div className="mx-auto flex max-w-[1100px] flex-col gap-14">
+    <div
+      className="bg-cream px-6 py-24 md:px-16 md:py-[120px]"
+      data-reveal
+      data-sec="faq"
+    >
+      <div className="mx-auto flex max-w-[820px] flex-col gap-16">
         <div className="flex flex-col items-center text-center">
-          <Overline label="FAQ" centered className="mb-[22px]" />
-          <h2 className="m-0 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[42px]">
+          <Overline label="FAQ" centered className="om-w1 mb-[22px]" />
+          <h2 className="om-w2 m-0 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[42px]">
             Ofte stillede spørgsmål
           </h2>
         </div>
-        <div className="mx-auto flex w-full max-w-[760px] flex-col border-b border-hairline">
+        <div className="flex w-full flex-col border-b border-hairline">
           {FAQS.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="border-t border-hairline">
+              <div key={f.q} className="faq-item border-t border-hairline">
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   aria-expanded={isOpen}
@@ -50,7 +54,7 @@ export default function FaqSection() {
                 >
                   {f.q}
                   <span
-                    className="flex-none font-sans text-[26px] font-light text-accent transition-transform duration-300"
+                    className="flex-none font-serif text-[26px] font-light text-accent transition-transform duration-300"
                     style={{
                       transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                     }}

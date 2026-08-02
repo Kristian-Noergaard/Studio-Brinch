@@ -14,7 +14,7 @@ export default function PageStub({
 }) {
   return (
     <main className="bg-cream text-ink">
-      <Header solid />
+      <Header variant="dark" />
       <div className="min-h-[60vh] px-6 pt-48 pb-28 md:px-16">
         <div className="mx-auto max-w-[1240px]">
           <Overline label={overline} className="mb-3.5" />

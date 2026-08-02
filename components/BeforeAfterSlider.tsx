@@ -11,7 +11,7 @@ export default function BeforeAfterSlider({
   after: string;
   label: string;
 }) {
-  const [pct, setPct] = useState(0);
+  const [pct, setPct] = useState(17);
 
   const onMove = (clientX: number, el: HTMLElement) => {
     const r = el.getBoundingClientRect();
@@ -20,7 +20,7 @@ export default function BeforeAfterSlider({
 
   return (
     <div
-      className="relative h-[280px] overflow-hidden rounded-t-[14px] cursor-col-resize"
+      className="relative h-[280px] overflow-hidden cursor-col-resize"
       role="img"
       aria-label={label}
       onMouseMove={(e) => onMove(e.clientX, e.currentTarget)}
@@ -39,7 +39,7 @@ export default function BeforeAfterSlider({
         }}
       />
       <div
-        className="absolute top-0 bottom-0 w-0.5 -translate-x-px"
+        className="absolute top-0 bottom-0 w-[5px] -translate-x-[2.5px]"
         style={{
           left: `${pct}%`,
           background: "rgba(253,252,249,0.95)",
@@ -47,7 +47,7 @@ export default function BeforeAfterSlider({
         }}
       />
       <div
-        className="absolute top-3.5 left-1/2 -translate-x-1/2 rounded-[3px] px-3 py-1 text-[11px] tracking-[2px] text-ink"
+        className="absolute top-3.5 left-1/2 -translate-x-1/2 rounded-[3px] px-3 py-1 font-sans text-[11px] tracking-[2px] text-ink"
         style={{ background: "rgba(253,252,249,0.85)" }}
       >
         {pct < 50 ? "FØR" : "EFTER"}

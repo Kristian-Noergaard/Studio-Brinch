@@ -1,40 +1,61 @@
 import Link from "next/link";
 import SocialIcons, { SOCIAL_LINKS } from "./SocialIcons";
 
-// Static stand-ins until a real Instagram feed is wired up
-const INSTA_TILES = [
-  "/assets/box_koekken.png",
-  "/assets/step_sofa.png",
-  "/assets/proces_bad1.png",
-  "/assets/step_island.png",
-  "/assets/proces_sovevaerelse.png",
-  "/assets/box_stue.png",
+const INSTA_TILES = [1, 2, 3, 4, 5, 6].map((n) => `/assets/slots/insta${n}.webp`);
+
+const MENU_LINKS = [
+  { label: "Hjem", href: "/" },
+  { label: "Portfolio", href: "/projekter" },
+  { label: "Services", href: "/ydelser" },
+  { label: "Inspiration", href: "/inspiration" },
+  { label: "Om os", href: "/om-os" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 const SERVICE_LINKS = [
   { label: "Om Studio Brinch", href: "/om-os" },
   { label: "Services", href: "/ydelser" },
   { label: "Privatlivspolitik", href: "/privatlivspolitik" },
+  { label: "Handelsbetingelser", href: "#" },
   { label: "Hjem", href: "/" },
 ];
 
-export default function Footer() {
+function FooterLink({ label, href }: { label: string; href: string }) {
   return (
-    <footer className="bg-brown px-6 pt-24 pb-16 md:px-16 md:pt-[110px] md:pb-[70px]">
+    <Link
+      href={href}
+      className="w-fit text-cream underline underline-offset-4 hover:text-rose"
+    >
+      {label}
+    </Link>
+  );
+}
+
+export default function Footer({ compact = false }: { compact?: boolean }) {
+  return (
+    <footer
+      className={`bg-brown px-6 pb-16 md:px-16 md:pb-[70px] ${
+        compact ? "pt-20 md:pt-[90px]" : "pt-24 md:pt-[110px]"
+      }`}
+    >
       <div className="mx-auto max-w-[1320px]">
-        <h2 className="m-0 mb-16 font-serif text-[34px] font-normal leading-[1.35] text-cream md:text-[46px]">
-          Follow
+        {!compact && (
+          <>
+        <h2 className="m-0 mb-16 font-serif text-[34px] font-normal leading-[1.35] text-cream md:ml-[70px] md:text-[46px]">
+          <span className="om-w1">Follow</span>
           <br />
-          <a
-            href={SOCIAL_LINKS.Instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cream hover:text-rose"
-          >
-            @studiobrinch
-          </a>
+          <span className="om-w2">
+            <a
+              href={SOCIAL_LINKS.Instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream hover:text-rose"
+            >
+              @studiobrinch
+            </a>
+          </span>
         </h2>
-        <div className="mx-auto mb-24 grid max-w-[1180px] grid-cols-3 gap-3 md:mb-[130px] md:grid-cols-6 md:gap-[22px]">
+        <div className="reveal-grid mx-auto mb-24 grid max-w-[1180px] grid-cols-3 gap-3 md:mb-[130px] md:grid-cols-6 md:gap-[22px]">
           {INSTA_TILES.map((src, i) => (
             <a
               key={src}
@@ -47,7 +68,9 @@ export default function Footer() {
             />
           ))}
         </div>
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-[60px]">
+          </>
+        )}
+        <div className="mx-auto flex max-w-[1180px] flex-col items-start gap-14 md:flex-row md:justify-between md:gap-[60px]">
           <div>
             <img
               src="/assets/logo_white.png"
@@ -56,42 +79,48 @@ export default function Footer() {
             />
             <SocialIcons className="text-cream [&_a:hover]:text-rose" />
           </div>
-          <div>
-            <h3 className="m-0 mb-[34px] font-serif text-[28px] font-medium text-cream">
-              Kundeservice
-            </h3>
-            <div className="flex flex-col gap-4 text-[16px] font-light">
-              {SERVICE_LINKS.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
+          <div className="flex flex-col gap-14 md:flex-row md:gap-[90px]">
+            <div>
+              <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
+                Menu
+              </h3>
+              <div className="flex flex-col gap-4 text-[16px] font-light">
+                {MENU_LINKS.map((l) => (
+                  <FooterLink key={l.label} {...l} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
+                Kundeservice
+              </h3>
+              <div className="flex flex-col gap-4 text-[16px] font-light">
+                {SERVICE_LINKS.map((l) => (
+                  <FooterLink key={l.label} {...l} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
+                Kontakt
+              </h3>
+              <div className="flex flex-col gap-3.5 text-[16px] font-light">
+                <a
+                  href="mailto:Kimmie@studio-brinch.dk"
                   className="w-fit text-cream underline underline-offset-4 hover:text-rose"
                 >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="m-0 mb-[34px] font-serif text-[28px] font-medium text-cream">
-              Kontakt
-            </h3>
-            <div className="flex flex-col gap-3.5 text-[16px] font-light">
-              <a
-                href="mailto:Kimmie@studio-brinch.dk"
-                className="w-fit text-cream underline underline-offset-4 hover:text-rose"
-              >
-                Kimmie@studio-brinch.dk
-              </a>
-              <a
-                href="tel:+4541866431"
-                className="w-fit text-cream underline underline-offset-4 hover:text-rose"
-              >
-                +45 41 86 64 31
-              </a>
-              <div className="text-cream">CVR: 44717077</div>
-              <div className="mt-[22px] text-cream/65">
-                © 2026 Studio Brinch
+                  Kimmie@studio-brinch.dk
+                </a>
+                <a
+                  href="tel:+4541866431"
+                  className="w-fit text-cream underline underline-offset-4 hover:text-rose"
+                >
+                  +45 41 86 64 31
+                </a>
+                <div className="text-cream">CVR: 44717077</div>
+                <div className="mt-[22px] text-cream/65">
+                  © 2026 Studio Brinch
+                </div>
               </div>
             </div>
           </div>

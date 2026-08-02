@@ -75,59 +75,119 @@ function GoogleG() {
   );
 }
 
+function SeProjekt() {
+  return (
+    <div className="inline-flex items-center gap-2.5 border-b border-cream/70 pb-1.5 font-sans text-[13px] tracking-[3px]">
+      SE PROJEKT <span className="text-[16px]">→</span>
+    </div>
+  );
+}
+
 export default function PortfolioSection() {
   return (
-    <div className="px-6 pt-24 pb-28 md:px-16 md:pt-[130px] md:pb-[140px]">
-      <div className="mx-auto max-w-[1240px]">
-        <div className="mb-[72px]">
-          <h2 className="m-0 font-serif text-[38px] font-normal leading-[1.3] text-ink md:text-[52px]">
-            Portfolio
-            <br />
-            Seneste projekter
-          </h2>
+    <div className="relative pb-28 md:pb-[120px]" data-reveal>
+      {/* Full-bleed panorama */}
+      <Link
+        href="/projekter"
+        aria-label="Stue, samler familien"
+        className="relative block aspect-[3/1] min-h-[260px] overflow-hidden text-cream"
+      >
+        <div
+          className="om-zoom om-parallax absolute inset-x-0 -inset-y-[12%] bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: "url('/assets/panorama_stue.jpg')",
+            backgroundPosition: "center 75%",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(20,18,14,0.30) 0%, transparent 40%, rgba(20,18,14,0.55) 100%)",
+          }}
+        />
+        <div className="absolute left-[18px] top-5 font-serif text-[36px] font-normal leading-none text-cream md:text-[52px]">
+          Portfolio
         </div>
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {PROJECTS.map((p) => (
-            <div key={p.title} className="flex flex-col">
-              <div
-                className="aspect-[4/5] overflow-hidden bg-beige bg-cover bg-no-repeat"
-                style={{
-                  backgroundImage: `url('${p.image}')`,
-                  backgroundPosition: p.position,
-                }}
-                role="img"
-                aria-label={p.title}
-              />
-              <h3 className="mt-[30px] font-serif text-[27px] font-medium text-ink">
+        <div className="absolute bottom-6 left-[18px] right-9 flex flex-col">
+          <h3 className="m-0 font-serif text-[22px] font-medium md:text-[28px]">
+            Stue | Samler familien
+          </h3>
+          <p
+            className="m-0 mt-3 hidden max-w-[520px] text-[15px] font-light leading-[1.7] text-cream/85 md:block"
+            style={{ textWrap: "pretty" }}
+          >
+            Fra køkkenet er et åbent rum, der kombinerer både spisestue og en
+            familievenlig stue, hvor hele familien kan mødes.
+          </p>
+        </div>
+        <div className="absolute bottom-6 right-9 hidden md:block">
+          <SeProjekt />
+        </div>
+      </Link>
+
+      {/* Edge-to-edge project tiles */}
+      <div className="reveal-grid relative grid grid-cols-1 gap-3.5 pt-3.5 md:grid-cols-3">
+        {PROJECTS.map((p) => (
+          <Link
+            key={p.title}
+            href="/projekter"
+            aria-label={p.title}
+            className="relative block aspect-[4/5] overflow-hidden text-cream"
+          >
+            <div
+              className="om-zoom om-parallax absolute inset-x-0 -inset-y-[10%] bg-beige bg-cover bg-no-repeat"
+              style={{
+                backgroundImage: `url('${p.image}')`,
+                backgroundPosition: p.position,
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0 transition-colors duration-400"
+              style={{
+                background:
+                  "linear-gradient(180deg, transparent 45%, rgba(20,18,14,0.55) 100%)",
+              }}
+            />
+            <div className="absolute bottom-3.5 left-[18px] right-9 top-[calc(100%-160px)] flex flex-col text-cream">
+              <h3 className="m-0 font-serif text-[24px] font-medium md:text-[28px]">
                 {p.title}
               </h3>
               <p
-                className="mt-[18px] text-[16px] font-light leading-[1.75] text-body"
+                className="m-0 mt-3 text-[15px] font-light leading-[1.7] text-cream/85"
                 style={{ textWrap: "pretty" }}
               >
                 {p.body}
               </p>
+              <div className="mt-auto self-end">
+                <SeProjekt />
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="mt-[90px] flex justify-center">
-          <Link
-            href="/projekter"
-            className="border border-ink px-[34px] py-4 text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
-          >
-            SE ALLE PROJEKTER
           </Link>
-        </div>
+        ))}
+      </div>
 
-        <div className="mt-[130px]">
-          <h2 className="m-0 mb-16 text-center font-serif text-[32px] font-normal text-ink md:text-[44px]">
+      <div className="mt-10 flex justify-center">
+        <Link
+          href="/projekter"
+          className="border border-ink px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+        >
+          SE ALLE PROJEKTER
+        </Link>
+      </div>
+
+      {/* Google reviews */}
+      <div className="mx-auto max-w-[1240px] px-6 md:px-10">
+        <div className="mt-[72px]">
+          <h2 className="om-riser m-0 mb-11 text-center font-serif text-[32px] font-normal text-ink md:text-[44px]">
             Hvad vores kunder siger om Studio Brinch
           </h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="reveal-grid grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {REVIEWS.map((r) => (
               <div
                 key={r.name}
-                className="flex flex-col gap-4 border border-hairline-light bg-offwhite px-[26px] py-7"
+                className="om-lift flex flex-col gap-4 border border-hairline-light bg-offwhite px-[26px] py-7"
+                style={{ boxShadow: "3px 3px 8px rgba(42,40,34,0.08)" }}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
@@ -161,7 +221,7 @@ export default function PortfolioSection() {
                   href="https://www.google.com/search?q=Studio+Brinch+Kolding+anmeldelser"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto text-[14px] font-medium text-accent underline underline-offset-4 hover:text-ink"
+                  className="mt-auto w-fit text-[14px] font-medium text-accent underline underline-offset-4 hover:text-ink"
                 >
                   Læs mere
                 </a>
