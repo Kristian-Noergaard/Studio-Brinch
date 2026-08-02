@@ -93,12 +93,19 @@ export default function YdelserPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
-      <div className="mt-[82px]">
+      <Header variant="light" />
+      <div className="relative">
         <img
           src="/assets/hero_services.jpg"
           alt="Studio Brinch er specialiseret i renovering, ombygning og nybyg"
           className="block w-full"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%)",
+          }}
         />
       </div>
 

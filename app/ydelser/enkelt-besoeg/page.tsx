@@ -44,7 +44,7 @@ export default function YdelseEnkeltBesoegPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="light" />
       <YdelseHero
         image="/assets/slots/yde-hero.webp"
         imageLabel="Panorama: lys stue"

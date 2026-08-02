@@ -169,10 +169,10 @@ export default async function ProjectPage({
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="light" />
 
-      {/* Hero panorama with quote */}
-      <div className="relative mt-[82px] h-[62vh] min-h-[480px] overflow-hidden bg-hairline">
+      {/* Hero panorama with quote — full-bleed to the top edge, nav floats over it */}
+      <div className="relative h-[62vh] min-h-[480px] overflow-hidden bg-hairline">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${p.hero}')` }}
@@ -183,7 +183,7 @@ export default async function ProjectPage({
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(20,18,14,0.45), transparent 65%)",
+              "linear-gradient(90deg, rgba(20,18,14,0.45), transparent 65%), linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%)",
           }}
         />
         <div className="om-herotitle pointer-events-none absolute bottom-10 left-6 max-w-[760px] text-cream md:bottom-16 md:left-16">

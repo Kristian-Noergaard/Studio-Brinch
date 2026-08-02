@@ -18,7 +18,7 @@ export default function YdelseTotalPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="light" />
       <YdelseHero
         image="/assets/slots/ydt-hero.webp"
         imageLabel="Panorama: skitsearbejde med farveprøver"

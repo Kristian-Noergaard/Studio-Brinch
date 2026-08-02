@@ -18,7 +18,7 @@ export default function YdelseIndretningPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="light" />
       <YdelseHero
         image="/assets/slots/ydi-hero.webp"
         imageLabel="Panorama: plantegning og kaffekop"

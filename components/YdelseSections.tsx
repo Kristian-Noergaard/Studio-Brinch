@@ -12,7 +12,7 @@ export function YdelseHero({
   subtitle: string;
 }) {
   return (
-    <div className="relative mt-[82px] h-[62vh] min-h-[480px] overflow-hidden bg-hairline">
+    <div className="relative h-[62vh] min-h-[480px] overflow-hidden bg-hairline">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${image}')` }}
@@ -22,7 +22,8 @@ export function YdelseHero({
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: "linear-gradient(0deg, rgba(20,18,14,0.55), transparent 55%)",
+          background:
+            "linear-gradient(0deg, rgba(20,18,14,0.55), transparent 55%), linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%)",
         }}
       />
       <h1 className="om-herotitle pointer-events-none absolute inset-x-0 bottom-14 m-0 px-10 text-center font-serif text-[clamp(24px,3vw,60px)] font-normal leading-[1.25] text-cream md:whitespace-nowrap">
