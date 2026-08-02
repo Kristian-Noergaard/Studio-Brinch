@@ -71,7 +71,7 @@ export function TripleSection({
     >
       {ghost && (
         <div
-          className="pointer-events-none absolute left-[70px] top-5 select-none font-serif text-[240px] italic leading-[0.8] text-accent md:text-[460px]"
+          className="pointer-events-none absolute left-[70px] top-5 hidden select-none font-serif text-[460px] italic leading-[0.8] text-accent md:block"
           style={{ opacity: 0.08 }}
           aria-hidden
         >

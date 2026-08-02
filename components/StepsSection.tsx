@@ -58,7 +58,7 @@ export default function StepsSection() {
             </h2>
             <Link
               href="/kontakt"
-              className="pointer-events-auto mt-10 w-max whitespace-nowrap border border-cream bg-transparent px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 lg:mt-auto"
+              className="pointer-events-auto mt-auto hidden w-max whitespace-nowrap border border-cream bg-transparent px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 lg:block"
             >
               BOOK EN SAMTALE
             </Link>
@@ -84,6 +84,12 @@ export default function StepsSection() {
                 </p>
               </div>
             ))}
+            <Link
+              href="/kontakt"
+              className="mt-2 w-max whitespace-nowrap border border-cream bg-transparent px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 lg:hidden"
+            >
+              BOOK EN SAMTALE
+            </Link>
           </div>
         </div>
       </div>

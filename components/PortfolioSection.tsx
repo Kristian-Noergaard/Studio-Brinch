@@ -136,7 +136,7 @@ export default function PortfolioSection() {
             className="relative block aspect-[4/5] overflow-hidden text-cream"
           >
             <div
-              className="om-zoom om-parallax absolute inset-x-0 -inset-y-[10%] bg-beige bg-cover bg-no-repeat"
+              className="om-zoom om-parallax absolute inset-x-0 -inset-y-[14%] bg-beige bg-cover bg-no-repeat"
               style={{
                 backgroundImage: `url('${p.image}')`,
                 backgroundPosition: p.position,
@@ -149,7 +149,7 @@ export default function PortfolioSection() {
                   "linear-gradient(180deg, transparent 45%, rgba(20,18,14,0.55) 100%)",
               }}
             />
-            <div className="absolute bottom-3.5 left-[18px] right-9 top-[calc(100%-160px)] flex flex-col text-cream">
+            <div className="absolute bottom-3.5 left-[18px] right-9 flex flex-col text-cream md:top-[calc(100%-160px)]">
               <h3 className="m-0 font-serif text-[24px] font-medium md:text-[28px]">
                 {p.title}
               </h3>
@@ -159,7 +159,7 @@ export default function PortfolioSection() {
               >
                 {p.body}
               </p>
-              <div className="mt-auto self-end">
+              <div className="mt-4 self-end md:mt-auto">
                 <SeProjekt />
               </div>
             </div>

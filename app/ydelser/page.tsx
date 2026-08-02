@@ -13,15 +13,17 @@ function ServiceImage({
   href,
   image,
   label,
+  className = "",
 }: {
   href: string;
   image: string;
   label: string;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
-      className="om-zoomwrap relative block min-h-[320px] overflow-hidden bg-hairline md:min-h-[620px]"
+      className={`om-zoomwrap relative block min-h-[320px] overflow-hidden bg-hairline md:min-h-[620px] ${className}`}
     >
       <div className="om-parallax absolute inset-x-0 -inset-y-10">
         <div
@@ -42,6 +44,7 @@ function ServiceText({
   price,
   href,
   beige = false,
+  className,
 }: {
   title: string;
   subtitle: string;
@@ -49,12 +52,13 @@ function ServiceText({
   price?: string;
   href: string;
   beige?: boolean;
+  className?: string;
 }) {
   return (
     <div
       className={`flex flex-col justify-center px-8 py-14 md:px-[72px] md:py-20 ${
         beige ? "bg-beige" : "bg-offwhite"
-      }`}
+      } ${className ?? ""}`}
       style={beige ? undefined : { boxShadow: "0 2px 20px rgba(42,40,34,0.06)" }}
     >
       <h2
@@ -146,6 +150,7 @@ export default function YdelserPage() {
             href="/ydelser/total"
             image="/assets/slots/yd-1.webp"
             label="Skitsearbejde med farveprøver"
+            className="order-1 md:order-none"
           />
           <ServiceText
             title="Total Interiør Design Service"
@@ -153,23 +158,28 @@ export default function YdelserPage() {
             body="Står du overfor en total renovering eller skal til at bygge nyt hus, er Studio Brinch klar til at håndtere dine boligdrømme. En fuld service-indretning af hele dit hjem, hvor vi indgår som tæt samarbejdspartner i dit boligprojekt, skræddersyet til jeres behov og præferencer."
             price="Da hvert projekt er skræddersyet, er prisen projektbaseret."
             href="/ydelser/total"
+            className="order-2 md:order-none"
           />
+          {/* On mobile the pair swaps so every service reads image-then-text */}
           <ServiceText
             title="Indretning og Design Service"
             subtitle="Opfriskning eller renovering af et eller flere rum"
             body="Skræddersyet til at give nyt liv til dine rum, uanset om du ønsker at renovere eller blot opfriske et eller flere rum. Tilgangen er samarbejdsorienteret, så din smag og dine behov er i centrum, og fra indledende konsultation til de sidste detaljer håndterer vi hver eneste del med omhyggelighed og kreativitet."
             href="/ydelser/indretning"
             beige
+            className="order-4 md:order-none"
           />
           <ServiceImage
             href="/ydelser/indretning"
             image="/assets/slots/yd-2.webp"
             label="Plantegning og kaffekop"
+            className="order-3 md:order-none"
           />
           <ServiceImage
             href="/ydelser/enkelt-besoeg"
             image="/assets/slots/yd-3.webp"
             label="Stue med lyse møbler"
+            className="order-5 md:order-none"
           />
           <ServiceText
             title="Et enkelt besøg"
@@ -177,6 +187,7 @@ export default function YdelserPage() {
             body="En fire timers konsultation i dit hjem, hvor vi kan snakke om alt, hvad du har brug for designmæssig hjælp til. Det kan være en sammenhængende farvepalette i hjemmet, hjælp til materialevalg, sparring til større eller mindre renovering, køkkenindretning med mere."
             price="Prisen for et enkelt besøg er 5.000 kr."
             href="/ydelser/enkelt-besoeg"
+            className="order-6 md:order-none"
           />
         </div>
       </div>
