@@ -88,7 +88,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
             />
             <SocialIcons className="text-cream [&_a:hover]:text-rose" />
           </div>
-          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-14 md:flex md:w-auto md:gap-[90px]">
+          <div className="grid w-full grid-cols-[auto_1fr] gap-x-8 gap-y-14 md:flex md:w-auto md:gap-[90px]">
             <div className="order-1">
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Menu
@@ -116,7 +116,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
               <div className="flex flex-col gap-3.5 text-[16px] font-light">
                 <a
                   href="mailto:Kimmie@studio-brinch.dk"
-                  className="w-fit break-all text-cream underline underline-offset-4 hover:text-rose"
+                  className="w-fit text-cream underline underline-offset-4 hover:text-rose max-md:text-[14px]"
                 >
                   Kimmie@studio-brinch.dk
                 </a>
