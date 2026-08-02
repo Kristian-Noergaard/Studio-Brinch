@@ -14,7 +14,7 @@ export default function KontaktPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="dark" menuBg="beige" />
 
       <div className="bg-beige px-6 pt-36 pb-16 md:px-16 md:pt-[170px] md:pb-20">
         <div className="om-herotitle mx-auto max-w-[1232px]">

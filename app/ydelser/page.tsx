@@ -97,12 +97,28 @@ export default function YdelserPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="light" mobileVariant="dark" />
-      {/* Mobile: the heading is baked into the photo and unreadable at phone
-          size, so it becomes real text above, and the photo a panoramic strip */}
-      <div className="om-herotitle bg-cream px-6 pt-28 pb-10 md:hidden">
+      <Header variant="light" />
+      {/* Mobile: original hero photo, cropped to its right side so the
+          baked-in heading stays out of frame; the heading is real text on top */}
+      <div className="relative block aspect-[4/5] overflow-hidden md:hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: "url('/assets/hero_services.jpg')",
+            backgroundPosition: "right center",
+          }}
+          role="img"
+          aria-label="Skitsearbejde i studiet"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%), linear-gradient(0deg, rgba(20,18,14,0.6), transparent 65%), linear-gradient(90deg, rgba(20,18,14,0.45), transparent 55%)",
+          }}
+        />
         <h1
-          className="m-0 font-serif text-[32px] font-normal leading-[1.3] text-ink"
+          className="om-herotitle absolute bottom-8 left-6 right-6 m-0 font-serif text-[30px] font-normal leading-[1.3] text-cream"
           style={{ textWrap: "pretty" }}
         >
           Studio Brinch er specialiseret i renovering, ombygning og nybyg. Om
@@ -110,16 +126,6 @@ export default function YdelserPage() {
           værelse.
         </h1>
       </div>
-      {/* hero_services.jpg has the heading baked in — use a clean photo for the strip */}
-      <div
-        className="block aspect-[21/10] bg-cover bg-no-repeat md:hidden"
-        style={{
-          backgroundImage: "url('/assets/forloeb_2.webp')",
-          backgroundPosition: "center 42%",
-        }}
-        role="img"
-        aria-label="Stue indrettet af Studio Brinch"
-      />
       <div className="relative hidden md:block">
         <img
           src="/assets/hero_services.jpg"
@@ -214,7 +220,7 @@ export default function YdelserPage() {
         </div>
       </div>
 
-      <div className="bg-beige px-6 py-24 text-center md:px-16 md:py-[120px]" data-reveal>
+      <div className="bg-beige px-6 py-14 text-center md:px-16 md:py-[120px]" data-reveal>
         <h2 className="m-0 mb-9 font-serif text-[32px] font-normal leading-[1.3] md:text-[44px]">
           Har du et projekt, jeg kan hjælpe dig med?
         </h2>

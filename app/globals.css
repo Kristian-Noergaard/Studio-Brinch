@@ -36,6 +36,14 @@ body {
   font-family: var(--font-cormorant), serif;
 }
 
+/* Mobile: light-weight serif body copy reads grey at small sizes —
+   bump to regular weight (same colors) below md */
+@media (max-width: 767px) {
+  .font-light {
+    font-weight: 400;
+  }
+}
+
 /* --- Motion system (Forside A, Aug 2026: scroll-scrubbed, reversible) --- */
 
 @keyframes om-reveal {

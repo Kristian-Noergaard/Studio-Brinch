@@ -35,7 +35,7 @@ export default function ArticleLayout({
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="light" />
+      <Header variant="light" menuBg="band" />
 
       {/* Title band */}
       <div
@@ -99,7 +99,7 @@ export default function ArticleLayout({
         {sections.map((s) => (
           <div
             key={s.n}
-            className="mx-auto grid max-w-[1160px] grid-cols-1 items-start gap-8 border-t border-beige py-[52px] lg:grid-cols-[360px_1fr] lg:gap-[90px]"
+            className="mx-auto grid max-w-[1160px] grid-cols-1 items-start gap-11 border-t border-beige py-[52px] lg:grid-cols-[360px_1fr] lg:gap-[90px]"
             data-reveal
           >
             <div className="flex flex-col gap-7 lg:sticky lg:top-[120px]">

@@ -12,7 +12,14 @@ export default function ReviewsCarousel() {
   const next = () => setIdx((i) => (i + 1) % REVIEWS.length);
 
   return (
-    <div className="sm:hidden">
+    <div className="grid grid-cols-[36px_1fr_36px] items-center gap-2 sm:hidden">
+      <button
+        onClick={prev}
+        aria-label="Forrige anmeldelse"
+        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[18px] text-ink transition-colors hover:bg-ink hover:text-cream"
+      >
+        ←
+      </button>
       <div
         onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
         onTouchEnd={(e) => {
@@ -25,25 +32,13 @@ export default function ReviewsCarousel() {
       >
         <ReviewCard review={REVIEWS[idx]} />
       </div>
-      <div className="mt-6 flex items-center justify-center gap-7">
-        <button
-          onClick={prev}
-          aria-label="Forrige anmeldelse"
-          className="flex h-11 w-11 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[20px] text-ink transition-colors hover:bg-ink hover:text-cream"
-        >
-          ←
-        </button>
-        <div className="font-sans text-[13px] tracking-[3px] text-body">
-          {idx + 1} / {REVIEWS.length}
-        </div>
-        <button
-          onClick={next}
-          aria-label="Næste anmeldelse"
-          className="flex h-11 w-11 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[20px] text-ink transition-colors hover:bg-ink hover:text-cream"
-        >
-          →
-        </button>
-      </div>
+      <button
+        onClick={next}
+        aria-label="Næste anmeldelse"
+        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[18px] text-ink transition-colors hover:bg-ink hover:text-cream"
+      >
+        →
+      </button>
     </div>
   );
 }

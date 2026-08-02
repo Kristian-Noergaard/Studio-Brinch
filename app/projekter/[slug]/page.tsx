@@ -260,13 +260,13 @@ export default async function ProjectPage({
               <div className="flex items-center gap-7">
                 <Link
                   href="/projekter"
-                  className="whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
+                  className="order-2 whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink md:order-none"
                 >
                   ALLE PROJEKTER
                 </Link>
                 <Link
                   href={`/projekter/${p.next.slug}`}
-                  className="inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+                  className="order-1 inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream md:order-none"
                 >
                   SE PROJEKT
                 </Link>
@@ -293,13 +293,13 @@ export default async function ProjectPage({
             <div className="flex items-center gap-7">
               <Link
                 href="/projekter"
-                className="whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
+                className="order-2 whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink md:order-none"
               >
                 ALLE PROJEKTER
               </Link>
               <Link
                 href={`/projekter/${p.next.slug}`}
-                className="inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+                className="order-1 inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream md:order-none"
               >
                 SE PROJEKT
               </Link>

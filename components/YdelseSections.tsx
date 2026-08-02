@@ -27,8 +27,10 @@ export function YdelseHero({
         }}
       />
       <h1 className="om-herotitle pointer-events-none absolute inset-x-0 bottom-10 m-0 px-6 text-left font-serif text-[36px] font-normal leading-[1.2] text-cream md:bottom-14 md:px-10 md:text-center md:text-[clamp(24px,3vw,60px)] md:leading-[1.25] md:whitespace-nowrap">
-        {title} <span className="text-rose">|</span>{" "}
-        <span className="italic text-[24px] md:text-[1em]">{subtitle}</span>
+        {title} <span className="hidden text-rose md:inline">|</span>{" "}
+        <span className="mt-1.5 block text-[24px] italic md:mt-0 md:inline md:text-[1em]">
+          {subtitle}
+        </span>
       </h1>
     </div>
   );

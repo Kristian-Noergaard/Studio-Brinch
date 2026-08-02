@@ -38,7 +38,7 @@ export default function InspirationPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="dark" />
+      <Header variant="dark" menuBg="beige" />
 
       <div className="bg-beige px-6 pt-36 pb-16 md:px-16 md:pt-[170px] md:pb-20">
         <div className="om-herotitle mx-auto max-w-[1232px]">
@@ -55,12 +55,12 @@ export default function InspirationPage() {
         </div>
       </div>
 
-      <div className="px-6 pt-24 pb-10 md:px-16 md:pt-[110px]" data-reveal>
+      <div className="px-6 pt-24 pb-0 md:px-16 md:pt-[110px] md:pb-10" data-reveal>
         {ARTICLES.map((a) => (
           <Link
             key={a.href}
             href={a.href}
-            className={`om-zoomwrap mx-auto mb-24 grid max-w-[1232px] grid-cols-1 items-center gap-10 text-ink md:mb-[110px] md:gap-20 ${
+            className={`om-zoomwrap mx-auto mb-16 grid max-w-[1232px] grid-cols-1 items-center gap-10 text-ink md:mb-[110px] md:gap-20 ${
               a.imageRight
                 ? "lg:grid-cols-[5fr_7fr]"
                 : "lg:grid-cols-[7fr_5fr]"
