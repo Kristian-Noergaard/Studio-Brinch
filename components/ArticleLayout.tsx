@@ -149,7 +149,7 @@ export default function ArticleLayout({
       </div>
 
       {/* CTA */}
-      <div className="bg-beige px-6 py-24 text-center md:px-16 md:py-[110px]" data-reveal>
+      <div className="bg-beige px-6 py-14 text-center md:px-16 md:py-[110px]" data-reveal>
         <h2 className="m-0 mb-9 font-serif text-[32px] font-normal leading-[1.3] md:text-[42px]">
           Har du et projekt, jeg kan hjælpe dig med?
         </h2>

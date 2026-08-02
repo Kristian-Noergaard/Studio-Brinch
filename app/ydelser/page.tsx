@@ -100,7 +100,7 @@ export default function YdelserPage() {
       <Header variant="light" />
       {/* Mobile: original hero photo, cropped to its right side so the
           baked-in heading stays out of frame; the heading is real text on top */}
-      <div className="relative block aspect-[4/5] overflow-hidden md:hidden">
+      <div className="relative block aspect-square overflow-hidden md:hidden">
         <div
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
@@ -114,11 +114,11 @@ export default function YdelserPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%), linear-gradient(0deg, rgba(20,18,14,0.6), transparent 65%), linear-gradient(90deg, rgba(20,18,14,0.45), transparent 55%)",
+              "linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%), linear-gradient(0deg, rgba(20,18,14,0.6), transparent 65%), linear-gradient(90deg, rgba(20,18,14,0.65), transparent 45%)",
           }}
         />
         <h1
-          className="om-herotitle absolute bottom-8 left-6 right-6 m-0 font-serif text-[30px] font-normal leading-[1.3] text-cream"
+          className="om-herotitle absolute bottom-7 left-6 right-6 m-0 font-serif text-[26px] font-normal leading-[1.3] text-cream"
           style={{ textWrap: "pretty" }}
         >
           Studio Brinch er specialiseret i renovering, ombygning og nybyg. Om
