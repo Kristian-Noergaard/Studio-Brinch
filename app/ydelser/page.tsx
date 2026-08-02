@@ -97,8 +97,30 @@ export default function YdelserPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="light" />
-      <div className="relative">
+      <Header variant="light" mobileVariant="dark" />
+      {/* Mobile: the heading is baked into the photo and unreadable at phone
+          size, so it becomes real text above, and the photo a panoramic strip */}
+      <div className="om-herotitle bg-cream px-6 pt-28 pb-10 md:hidden">
+        <h1
+          className="m-0 font-serif text-[32px] font-normal leading-[1.3] text-ink"
+          style={{ textWrap: "pretty" }}
+        >
+          Studio Brinch er specialiseret i renovering, ombygning og nybyg. Om
+          det drejer sig om at forvandle et helt hus eller forfriske et enkelt
+          værelse.
+        </h1>
+      </div>
+      {/* hero_services.jpg has the heading baked in — use a clean photo for the strip */}
+      <div
+        className="block aspect-[21/10] bg-cover bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: "url('/assets/forloeb_2.webp')",
+          backgroundPosition: "center 42%",
+        }}
+        role="img"
+        aria-label="Stue indrettet af Studio Brinch"
+      />
+      <div className="relative hidden md:block">
         <img
           src="/assets/hero_services.jpg"
           alt="Studio Brinch er specialiseret i renovering, ombygning og nybyg"
@@ -144,7 +166,7 @@ export default function YdelserPage() {
         </div>
       </div>
 
-      <div className="px-0 pb-24 md:px-16 md:pb-[120px]" data-reveal>
+      <div className="px-0 pb-0 md:px-16 md:pb-[120px]" data-reveal>
         <div className="reveal-grid mx-auto grid max-w-[1320px] grid-cols-1 items-stretch md:grid-cols-2">
           <ServiceImage
             href="/ydelser/total"

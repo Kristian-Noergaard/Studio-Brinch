@@ -1,7 +1,16 @@
 import Link from "next/link";
 import SocialIcons, { SOCIAL_LINKS } from "./SocialIcons";
 
-const INSTA_TILES = [1, 2, 3, 4, 5, 6].map((n) => `/assets/slots/insta${n}.webp`);
+// The design bundle's insta1-6.webp are empty-slot placeholder graphics —
+// use real project photos as stand-ins until actual Instagram posts are wired
+const INSTA_TILES = [
+  "/assets/box_koekken.png",
+  "/assets/step_sofa.png",
+  "/assets/proces_bad1.png",
+  "/assets/step_island.png",
+  "/assets/proces_sovevaerelse.png",
+  "/assets/box_stue.png",
+];
 
 const MENU_LINKS = [
   { label: "Hjem", href: "/" },
@@ -79,8 +88,8 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
             />
             <SocialIcons className="text-cream [&_a:hover]:text-rose" />
           </div>
-          <div className="flex flex-col gap-14 md:flex-row md:gap-[90px]">
-            <div>
+          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-14 md:flex md:w-auto md:gap-[90px]">
+            <div className="order-1">
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Menu
               </h3>
@@ -90,7 +99,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="order-3 md:order-none">
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Kundeservice
               </h3>
@@ -100,14 +109,14 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="order-2 min-w-0 md:order-none">
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Kontakt
               </h3>
               <div className="flex flex-col gap-3.5 text-[16px] font-light">
                 <a
                   href="mailto:Kimmie@studio-brinch.dk"
-                  className="w-fit text-cream underline underline-offset-4 hover:text-rose"
+                  className="w-fit break-all text-cream underline underline-offset-4 hover:text-rose"
                 >
                   Kimmie@studio-brinch.dk
                 </a>

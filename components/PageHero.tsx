@@ -9,7 +9,7 @@ export default function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="bg-cream px-6 pt-40 pb-20 text-center md:px-16 md:pt-[206px] md:pb-[118px]">
+    <div className="bg-cream px-6 pt-28 pb-16 text-center md:px-16 md:pt-[206px] md:pb-[118px]">
       <div className="om-herotitle">
         <div className="mb-[30px] font-sans text-[14px] tracking-[5px] text-accent">
           {kicker}

@@ -58,7 +58,7 @@ export default function Hero() {
         ref={fadeRef}
         className="absolute left-6 right-6 bottom-40 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24"
       >
-        <div className="-mb-3.5 font-sans text-[13px] md:text-[14px] tracking-[5px]">
+        <div className="-mb-3.5 hidden font-sans text-[14px] tracking-[5px] md:block">
           INDRETNINGSARKITEKTUR &amp; INTERIØRDESIGN
         </div>
         <h1
@@ -71,11 +71,11 @@ export default function Hero() {
       </div>
       <Link
         href="/projekter"
-        className="absolute left-6 bottom-24 md:left-auto md:right-16 md:bottom-24 border border-cream px-10 py-4 font-sans text-[14px] tracking-[3px] text-cream transition-colors hover:bg-cream/15"
+        className="absolute right-6 bottom-24 md:right-16 border border-cream px-8 py-3.5 md:px-10 md:py-4 font-sans text-[13px] md:text-[14px] tracking-[3px] text-cream transition-colors hover:bg-cream/15"
       >
         SE VORES PROJEKTER
       </Link>
-      <div className="absolute bottom-9 left-0 right-0 flex justify-center gap-2.5">
+      <div className="absolute bottom-[104px] left-6 right-auto flex justify-start gap-2.5 md:bottom-9 md:left-0 md:right-0 md:justify-center">
         {SLIDES.map((_, i) => (
           <div
             key={i}

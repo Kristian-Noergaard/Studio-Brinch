@@ -127,7 +127,7 @@ function GalleryImage({ src, label }: { src: string; label: string }) {
 function CtaPanel({ centered = false }: { centered?: boolean }) {
   return (
     <div
-      className={`flex min-h-[400px] flex-col justify-center p-10 md:min-h-[640px] md:p-16 ${
+      className={`flex flex-col justify-center p-10 md:min-h-[640px] md:p-16 ${
         centered
           ? "items-center bg-beige text-center"
           : "items-start bg-cream"
@@ -144,7 +144,7 @@ function CtaPanel({ centered = false }: { centered?: boolean }) {
       </h2>
       <Link
         href="/kontakt"
-        className="inline-block border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+        className="inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
       >
         BOOK EN SAMTALE
       </Link>
@@ -248,7 +248,7 @@ export default async function ProjectPage({
         ) : (
           <div className="reveal-grid mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
             <CtaPanel centered />
-            <div className="flex min-h-[400px] flex-col items-center justify-center bg-cream p-10 text-center md:min-h-[640px] md:p-16">
+            <div className="flex flex-col items-center justify-center bg-cream p-10 text-center md:min-h-[640px] md:p-16">
               <div className="mb-[18px] font-sans text-[14px] tracking-[5px] text-accent">
                 NÆSTE PROJEKT
               </div>
@@ -260,13 +260,13 @@ export default async function ProjectPage({
               <div className="flex items-center gap-7">
                 <Link
                   href="/projekter"
-                  className="border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
+                  className="whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
                 >
                   ALLE PROJEKTER
                 </Link>
                 <Link
                   href={`/projekter/${p.next.slug}`}
-                  className="inline-block border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+                  className="inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
                 >
                   SE PROJEKT
                 </Link>
@@ -278,7 +278,7 @@ export default async function ProjectPage({
 
       {/* Næste projekt band (pages whose gallery ends with the CTA panel) */}
       {lastOdd && (
-        <div className="bg-beige px-6 py-24 md:px-16 md:py-[120px]" data-reveal>
+        <div className="bg-beige px-6 py-14 md:px-16 md:py-[120px]" data-reveal>
           <div className="mx-auto flex max-w-[1232px] flex-wrap items-end justify-between gap-12">
             <div>
               <div className="mb-[18px] font-sans text-[14px] tracking-[5px] text-accent">
@@ -293,13 +293,13 @@ export default async function ProjectPage({
             <div className="flex items-center gap-7">
               <Link
                 href="/projekter"
-                className="border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
+                className="whitespace-nowrap border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"
               >
                 ALLE PROJEKTER
               </Link>
               <Link
                 href={`/projekter/${p.next.slug}`}
-                className="inline-block border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+                className="inline-block whitespace-nowrap border border-ink px-10 py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
               >
                 SE PROJEKT
               </Link>

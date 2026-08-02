@@ -64,8 +64,10 @@ function ProjectTile({
         </div>
       </div>
       <div
-        className={`pointer-events-none absolute hidden border-b border-cream pb-1 font-sans text-[13px] tracking-[3px] md:block ${
-          wide ? "right-16 bottom-14" : "right-12 bottom-[52px]"
+        className={`pointer-events-none absolute border-b border-cream pb-1 font-sans text-[13px] tracking-[3px] ${
+          wide
+            ? "right-6 bottom-14 md:right-16"
+            : "right-6 bottom-[52px] md:right-12"
         }`}
       >
         SE PROJEKT

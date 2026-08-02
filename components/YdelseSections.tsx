@@ -26,9 +26,9 @@ export function YdelseHero({
             "linear-gradient(0deg, rgba(20,18,14,0.55), transparent 55%), linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%)",
         }}
       />
-      <h1 className="om-herotitle pointer-events-none absolute inset-x-0 bottom-14 m-0 px-10 text-center font-serif text-[clamp(24px,3vw,60px)] font-normal leading-[1.25] text-cream md:whitespace-nowrap">
+      <h1 className="om-herotitle pointer-events-none absolute inset-x-0 bottom-10 m-0 px-6 text-left font-serif text-[36px] font-normal leading-[1.2] text-cream md:bottom-14 md:px-10 md:text-center md:text-[clamp(24px,3vw,60px)] md:leading-[1.25] md:whitespace-nowrap">
         {title} <span className="text-rose">|</span>{" "}
-        <span className="italic">{subtitle}</span>
+        <span className="italic text-[24px] md:text-[1em]">{subtitle}</span>
       </h1>
     </div>
   );
@@ -80,6 +80,9 @@ export function TripleSection({
       )}
       <div className="relative mx-auto max-w-[1100px]">
         <h2 className="m-0 py-2.5 font-serif text-[32px] font-medium leading-[1.05] md:text-[44px]">
+          {ghost && (
+            <span className="italic text-accent md:hidden">{ghost}. </span>
+          )}
           {title}
         </h2>
         <p
@@ -114,7 +117,7 @@ export function TripleSection({
 
 export function YdelseCta({ price }: { price?: string }) {
   return (
-    <div className="bg-beige px-6 py-24 text-center md:px-16 md:py-[120px]" data-reveal>
+    <div className="bg-beige px-6 py-14 text-center md:px-16 md:py-[120px]" data-reveal>
       <h2 className="m-0 mb-5 font-serif text-[32px] font-normal leading-[1.3] md:text-[44px]">
         Har du et projekt, jeg kan hjælpe dig med?
       </h2>
