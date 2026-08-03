@@ -2,151 +2,110 @@
 
 import { useEffect } from "react";
 
-// Mounts once per page. The reveal/write-on system is CSS scroll-driven
-// (animation-timeline: view() in globals.css); this component adds:
-// 1. word-by-word scrubbed write-on for paragraphs marked .om-words
-// 2. an IntersectionObserver fallback cascade when view() is unsupported
-// 3. damped parallax drift on .om-parallax image layers
+// Mounts once per page. One-shot fade reveal matching the studio's live
+// Squarespace site (fade / 1.5s / ease): section blocks, grid items, step
+// cards and FAQ items still below the viewport get .om-fx (opacity 0);
+// the first time they scroll into view .om-vis fades them in. Nothing
+// reverses or re-plays on the way back up, and content already on screen
+// at load stays static.
 export default function PageEffects() {
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const supportsView =
-      window.CSS && CSS.supports && CSS.supports("animation-timeline: view()");
+    if (reduced) return;
 
-    if (supportsView && !reduced) {
-      // Word-by-word scrubbed write-on (reading order across wrapped lines)
-      document.querySelectorAll<HTMLElement>("p.om-words").forEach((p) => {
-        p.classList.remove("om-v3", "om-words");
-        const wrapWords = (node: Node) => {
-          if (node.nodeType === 3) {
-            const frag = document.createDocumentFragment();
-            (node.textContent ?? "").split(/(\s+)/).forEach((part) => {
-              if (!part) return;
-              if (/^\s+$/.test(part)) {
-                frag.appendChild(document.createTextNode(part));
-                return;
-              }
-              const s = document.createElement("span");
-              s.textContent = part;
-              s.className = "om-word";
-              frag.appendChild(s);
-            });
-            node.parentNode?.replaceChild(frag, node);
-          } else if (node.nodeType === 1) {
-            [...node.childNodes].forEach(wrapWords);
-          }
-        };
-        [...p.childNodes].forEach(wrapWords);
-        const words = p.querySelectorAll<HTMLElement>(".om-word");
-        const n = words.length,
-          start = 30,
-          span = 36;
-        words.forEach((w, i) => {
-          const a = start + (span * i) / n;
-          const b = Math.min(start + span, a + (span / n) * 2.5);
-          w.style.cssText =
-            "display:inline-block; animation:om-write 1s linear both; animation-timeline:view(); animation-range:cover " +
-            a.toFixed(2) +
-            "% cover " +
-            b.toFixed(2) +
-            "%;";
+    const targets = new Set<Element>();
+    document.querySelectorAll("[data-reveal]").forEach((sec) => {
+      for (const el of sec.children) targets.add(el);
+    });
+    const isMobile = matchMedia("(max-width: 767px)").matches;
+    document.querySelectorAll(".reveal-grid").forEach((grid) => {
+      if (grid.closest("form")) return;
+      // mobile carousels scroll horizontally — the track animates as a
+      // whole, not the cards inside it
+      if (isMobile && grid.classList.contains("sb-carousel")) return;
+      for (const el of grid.children) targets.add(el);
+    });
+    document
+      .querySelectorAll(".step-card, .faq-item")
+      .forEach((el) => targets.add(el));
+
+    // Proces/services cards and forløbet steps keep the original staggered
+    // fade-and-rise cascade (one-shot); everything else is a plain fade.
+    // The card grids also trigger later — well into the viewport — so the
+    // cascade clearly happens in front of you.
+    const rise = new Set<Element>();
+    const late = new Set<Element>();
+    document
+      .querySelectorAll(
+        '[data-sec="proces"] .reveal-grid, [data-sec="services"] .reveal-grid'
+      )
+      .forEach((grid) => {
+        if (isMobile && grid.classList.contains("sb-carousel")) {
+          rise.add(grid);
+          late.add(grid);
+          targets.add(grid);
+          return;
+        }
+        [...grid.children].forEach((el, i) => {
+          rise.add(el);
+          late.add(el);
+          (el as HTMLElement).style.setProperty(
+            "--fxd",
+            Math.min(i, 4) * 0.15 + "s"
+          );
         });
       });
+    document.querySelectorAll(".step-card").forEach((el) => {
+      rise.add(el);
+      const siblings = [...(el.parentElement?.children ?? [])].filter((s) =>
+        s.classList.contains("step-card")
+      );
+      (el as HTMLElement).style.setProperty(
+        "--fxd",
+        Math.min(siblings.indexOf(el), 4) * 0.15 + "s"
+      );
+    });
 
-      // Detail-page variant: per-paragraph offset, entry-based ranges
-      document
-        .querySelectorAll<HTMLElement>("p.om-words-entry")
-        .forEach((p, pi) => {
-          p.classList.remove("om-v3", "om-words-entry");
-          const wrapWords = (node: Node) => {
-            if (node.nodeType === 3) {
-              const frag = document.createDocumentFragment();
-              (node.textContent ?? "").split(/(\s+)/).forEach((part) => {
-                if (!part) return;
-                if (/^\s+$/.test(part)) {
-                  frag.appendChild(document.createTextNode(part));
-                  return;
-                }
-                const s = document.createElement("span");
-                s.textContent = part;
-                s.className = "om-word";
-                frag.appendChild(s);
-              });
-              node.parentNode?.replaceChild(frag, node);
-            } else if (node.nodeType === 1) {
-              [...node.childNodes].forEach(wrapWords);
-            }
-          };
-          [...p.childNodes].forEach(wrapWords);
-          const words = p.querySelectorAll<HTMLElement>(".om-word");
-          const n = words.length,
-            start = 25 + pi * 30,
-            span = 28;
-          words.forEach((w, i) => {
-            const a = start + (span * i) / n;
-            const b = Math.min(start + span, a + (span / n) * 2.5);
-            w.style.cssText =
-              "display:inline-block; animation:om-write 1s linear both; animation-timeline:view(); animation-range:entry " +
-              a.toFixed(2) +
-              "% entry " +
-              Math.min(b, 99).toFixed(2) +
-              "%;";
-          });
-        });
+    // Content already on screen at load stays static; the rest fades in on
+    // first scroll into view. Content too close to the page bottom to ever
+    // clear the trigger line fades as soon as it appears instead.
+    const vh = window.innerHeight;
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
+    const normal: Element[] = [];
+    const lateOnes: Element[] = [];
+    const nearBottom: Element[] = [];
+    for (const el of targets) {
+      if (el.closest("form")) continue;
+      const top = el.getBoundingClientRect().top;
+      if (top < vh) continue;
+      el.classList.add(rise.has(el) ? "om-fx-rise" : "om-fx");
+      const topAtMaxScroll = top + window.scrollY - maxScroll;
+      if (topAtMaxScroll >= vh * 0.65) nearBottom.push(el);
+      else if (late.has(el)) lateOnes.push(el);
+      else normal.push(el);
     }
-
-    let fxIo: IntersectionObserver | undefined;
-    if (!supportsView && !reduced) {
-      // Fallback: two-way cascade on grid items and step cards
-      const items: [Element, number][] = [];
-      document
-        .querySelectorAll("[data-reveal] .reveal-grid")
-        .forEach((grid) => {
-          if (grid.closest("form")) return;
-          [...grid.children].forEach((el, i) => items.push([el, i]));
-        });
-      document
-        .querySelectorAll(".step-card")
-        .forEach((el, i) => items.push([el, i]));
-      for (const [el, i] of items) {
-        el.classList.add("om-fx");
-        (el as HTMLElement).style.transitionDelay =
-          Math.min(i, 4) * 0.12 + "s";
+    const onEnter: IntersectionObserverCallback = (entries, io) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add("om-vis");
+        io.unobserve(e.target);
       }
-      fxIo = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries)
-            e.target.classList.toggle("om-vis", e.isIntersecting);
-        },
-        { rootMargin: "0px 0px -22% 0px" }
-      );
-      items.forEach(([el]) => fxIo!.observe(el));
-    }
-
-    let raf = 0;
-    if (!reduced) {
-      const els = [...document.querySelectorAll<HTMLElement>(".om-parallax")].map(
-        (el) => ({ el, cur: 0 })
-      );
-      const tick = () => {
-        const vh = window.innerHeight;
-        for (const p of els) {
-          const parent = p.el.parentElement;
-          if (!parent) continue;
-          const r = parent.getBoundingClientRect();
-          if (r.bottom < -100 || r.top > vh + 100) continue;
-          const target = (r.top + r.height / 2 - vh / 2) * 0.07;
-          p.cur += (target - p.cur) * 0.12;
-          p.el.style.translate = `0 ${p.cur.toFixed(2)}px`;
-        }
-        raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    }
+    };
+    const io = new IntersectionObserver(onEnter, {
+      rootMargin: "0px 0px -15% 0px",
+    });
+    const ioLate = new IntersectionObserver(onEnter, {
+      rootMargin: "0px 0px -32% 0px",
+    });
+    const ioBottom = new IntersectionObserver(onEnter, { rootMargin: "0px" });
+    normal.forEach((el) => io.observe(el));
+    lateOnes.forEach((el) => ioLate.observe(el));
+    nearBottom.forEach((el) => ioBottom.observe(el));
 
     return () => {
-      fxIo?.disconnect();
-      cancelAnimationFrame(raf);
+      io.disconnect();
+      ioLate.disconnect();
+      ioBottom.disconnect();
     };
   }, []);
 

@@ -45,10 +45,10 @@ export default function KontaktPage() {
               <h3 className="m-0 mb-1.5 font-serif text-[32px] font-medium text-ink">
                 Kimmie Brinch
               </h3>
-              <div className="mb-4 font-serif text-[19px] italic text-body">
+              <div className="mb-4 font-sans text-[15px] font-light tracking-[0.5px] text-body">
                 Ejer &amp; Indretningsdesigner
               </div>
-              <div className="mb-4 flex flex-col gap-4 text-[16px] font-light">
+              <div className="mb-4 flex flex-col gap-4 font-sans text-[16px] font-light">
                 <a
                   href="tel:+4541866431"
                   className="w-fit text-ink underline underline-offset-4 hover:text-accent"
@@ -64,7 +64,7 @@ export default function KontaktPage() {
                 <div className="text-body">CVR: 44717077</div>
               </div>
               <SocialIcons className="mb-4 text-ink [&_a:hover]:text-accent" />
-              <div className="mt-auto text-[16px] font-light leading-[1.7] text-body">
+              <div className="mt-auto text-[20px] font-light leading-[1.7] text-body">
                 Vi holder til i Kolding og arbejder primært i Trekantområdet og
                 det øvrige Jylland. Online rådgivning er også en mulighed.
               </div>

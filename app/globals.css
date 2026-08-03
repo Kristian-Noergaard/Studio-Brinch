@@ -11,7 +11,8 @@
   --color-brown-hover: #6a675d;
   --color-ink: #2a2822; /* near-black text / dark buttons */
   --color-olive: #3a382f; /* nav links on light, image placeholders */
-  --color-body: #55524a; /* body text gray-brown */
+  --color-body: #2a2822; /* body text — same as ink; client wants body copy as
+     prominent as the headings (was gray-brown #55524a from the handoff) */
   --color-accent: #6f4234; /* overlines, numerals, links, rules */
   --color-rose: #c9a78f; /* accent on dark backgrounds */
   --color-hairline: #c9c2ae;
@@ -44,37 +45,31 @@ body {
   }
 }
 
-/* --- Motion system (Forside A, Aug 2026: scroll-scrubbed, reversible) --- */
-
-@keyframes om-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+/* --- Motion system (final, Aug 2026): Squarespace-style fade reveal,
+   matching the studio's live site studio-brinch.dk (animation "fade",
+   1.5s, ease). PageEffects adds .om-fx to content still below the
+   viewport; .om-vis fades it in ONCE the first time it scrolls into
+   view. Nothing reverses or re-plays on the way back up, and content
+   already on screen at load stays static. --- */
+.om-fx {
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
-@keyframes om-write {
-  from {
-    clip-path: inset(0 100% 0 0);
-    opacity: 0.25;
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
+.om-fx.om-vis {
+  opacity: 1;
 }
-@keyframes om-write-v {
-  from {
-    clip-path: inset(0 0 100% 0);
-    opacity: 0.25;
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
+/* Card variant (homepage proces/services cards + forløbet steps): the
+   original fade-and-rise cascade, staggered via --fxd, still one-shot */
+.om-fx-rise {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--fxd, 0s);
+}
+.om-fx-rise.om-vis {
+  opacity: 1;
+  transform: none;
 }
 
 @keyframes om-herorise {
@@ -91,150 +86,12 @@ body {
   animation: om-herorise 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
-@supports (animation-timeline: view()) {
-  /* Section direct children fade-rise, scrubbed by scroll (reverses on the way up) */
-  [data-reveal] > * {
-    animation: om-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 5% entry 45%;
-  }
-  /* Headings & subheads write on line-by-line; .om-v* are vertical wipes for paragraphs */
-  .om-w1,
-  .om-w2,
-  .om-w3 {
-    animation: om-write 1s linear both;
-    animation-timeline: view();
-  }
-  .om-v2,
-  .om-v3 {
-    animation: om-write-v 1s linear both;
-    animation-timeline: view();
-  }
-  span.om-w1,
-  span.om-w2,
-  span.om-w3 {
-    display: inline-block;
-  }
-  .om-w1 {
-    animation-range: entry 0% cover 20%;
-  }
-  .om-w2,
-  .om-v2 {
-    animation-range: entry 5% cover 27%;
-  }
-  .om-w3,
-  .om-v3 {
-    animation-range: entry 10% cover 34%;
-  }
-  /* Proces + Services: strictly sequential writing */
-  [data-sec="proces"] .om-w1,
-  [data-sec="services"] .om-w1 {
-    animation-range: entry 20% cover 16%;
-  }
-  [data-sec="proces"] .om-w2,
-  [data-sec="services"] .om-w2 {
-    animation-range: cover 16% cover 30%;
-  }
-  [data-sec="proces"] .om-v3,
-  [data-sec="services"] .om-v3 {
-    animation-range: cover 30% cover 44%;
-  }
-  [data-sec="kontakt"] .om-w1,
-  [data-sec="faq"] .om-w1,
-  footer .om-w1 {
-    animation-range: entry 0% entry 60%;
-  }
-  [data-sec="kontakt"] .om-w2,
-  [data-sec="kontakt"] .om-v2,
-  [data-sec="faq"] .om-w2,
-  [data-sec="faq"] .om-v2,
-  footer .om-w2 {
-    animation-range: entry 20% entry 88%;
-  }
-  [data-sec="kontakt"] .om-w3,
-  [data-sec="kontakt"] .om-v3,
-  [data-sec="faq"] .om-w3,
-  [data-sec="faq"] .om-v3 {
-    animation-range: entry 20% entry 90%;
-  }
-  .om-riser {
-    animation: om-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 32%;
-  }
-  /* Forløbet: heading stays static; only step cards animate */
-  [data-sec="forloebet"] > *,
-  [data-sec="forloebet"] .reveal-grid > * {
-    animation: none;
-    opacity: 1;
-  }
-  /* FAQ items fade-rise individually */
-  .faq-item {
-    animation: om-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 30%;
-  }
-  /* Grid items cascade, scrubbed over a longer travel */
-  [data-reveal] .reveal-grid > * {
-    animation: om-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 32%;
-  }
-  [data-reveal] .reveal-grid > *:nth-child(2) {
-    animation-range: entry 5% cover 39%;
-  }
-  [data-reveal] .reveal-grid > *:nth-child(3) {
-    animation-range: entry 10% cover 46%;
-  }
-  [data-reveal] .reveal-grid > *:nth-child(n + 4) {
-    animation-range: entry 15% cover 52%;
-  }
-  /* form content must not animate */
-  [data-reveal] form * {
-    animation: none;
-    opacity: 1;
-    clip-path: none;
-  }
-  /* forløbet step cards appear one after another, disappear on the way up */
-  .step-card {
-    animation: om-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 32%;
-  }
-  .step-card:nth-child(2) {
-    animation-range: entry 5% cover 39%;
-  }
-  .step-card:nth-child(3) {
-    animation-range: entry 10% cover 46%;
-  }
-  .step-card:nth-child(4) {
-    animation-range: entry 15% cover 52%;
-  }
-  /* bottom-of-page content can never finish a long entry range — complete early */
-  [data-sec="kontakt"] .reveal-grid > *,
-  [data-sec="kontakt"] h2,
-  [data-sec="kontakt"] > * {
-    animation-range: entry 0% entry 30%;
-  }
-  footer h2 {
-    animation-range: entry 0% entry 25%;
-  }
-  footer > *,
-  footer .reveal-grid > * {
-    animation-range: entry 0% entry 25%;
-  }
+/* Horizontal card carousels (mobile): scroll area without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
 }
-
-/* JS fallback when scroll-driven animations are unsupported */
-.om-fx {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.om-fx.om-vis {
-  opacity: 1;
-  transform: none;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Hover zoom on image layers */
@@ -256,28 +113,16 @@ a:hover .om-zoom,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] > *,
-  [data-reveal] .reveal-grid > *,
-  .om-w1,
-  .om-w2,
-  .om-w3,
-  .om-v2,
-  .om-v3,
-  .om-riser,
-  .faq-item,
-  .step-card,
-  .om-herotitle,
-  .om-fx {
+  .om-fx,
+  .om-fx-rise,
+  .om-herotitle {
     opacity: 1 !important;
     animation: none !important;
-    clip-path: none !important;
+    transition: none !important;
     transform: none !important;
   }
   a:hover .om-zoom,
   .om-zoomwrap:hover .om-zoom {
     transform: none;
-  }
-  .om-parallax {
-    translate: none !important;
   }
 }

@@ -44,14 +44,14 @@ export default function StepsSection() {
         />
         <div className="pointer-events-none relative grid grid-cols-1 items-stretch gap-10 px-6 py-14 lg:grid-cols-[1fr_auto] lg:gap-16 lg:px-[110px] lg:py-[72px]">
           <div className="flex flex-col">
-            <div className="mb-3.5 flex items-center gap-[18px]">
-              <div className="h-px w-16 bg-cream" />
+            <div className="mb-3.5 flex items-center gap-[18px] max-md:justify-center">
+              <div className="h-px w-16 bg-cream max-md:hidden" />
               <div className="font-sans text-[14px] tracking-[5px] text-cream">
                 FORLØBET
               </div>
             </div>
             <h2
-              className="m-0 max-w-[480px] font-serif text-[34px] font-medium leading-[1.15] text-cream md:text-[44px]"
+              className="m-0 max-w-[480px] font-serif text-[34px] font-medium leading-[1.15] text-cream max-md:self-center max-md:text-center md:text-[44px]"
               style={{ textWrap: "pretty" }}
             >
               Fire trin fra dialog til opfølgning
@@ -77,7 +77,7 @@ export default function StepsSection() {
                   {s.title}
                 </h3>
                 <p
-                  className="m-0 text-[14px] font-light leading-[1.6] text-olive"
+                  className="m-0 text-[18px] font-light leading-[1.6] text-olive"
                   style={{ textWrap: "pretty" }}
                 >
                   {s.body}
@@ -86,7 +86,7 @@ export default function StepsSection() {
             ))}
             <Link
               href="/kontakt"
-              className="mt-2 w-max whitespace-nowrap border border-cream bg-transparent px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 lg:hidden"
+              className="mt-2 w-max max-md:self-center whitespace-nowrap border border-cream bg-transparent px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-cream/15 lg:hidden"
             >
               BOOK EN SAMTALE
             </Link>

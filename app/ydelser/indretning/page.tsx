@@ -22,7 +22,13 @@ export default function YdelseIndretningPage() {
       <YdelseHero
         image="/assets/slots/ydi-hero.webp"
         imageLabel="Panorama: plantegning og kaffekop"
-        title="Indretning og Design Service"
+        title={
+          <>
+            Indretning og
+            <br className="md:hidden" />{" "}
+            Design Service
+          </>
+        }
         subtitle="Opfriskning eller renovering af et eller flere rum"
       />
       <YdelseIntro>
@@ -36,7 +42,7 @@ export default function YdelseIndretningPage() {
             Vores tilgang
           </h2>
           <p
-            className="m-0 text-[17px] font-light leading-[1.85] text-body"
+            className="m-0 text-[21px] font-light leading-[1.85] text-body"
             style={{ textWrap: "pretty" }}
           >
             Vi forstår, at hvert rum har unikt potentiale og personlighed.

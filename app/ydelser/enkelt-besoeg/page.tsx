@@ -62,7 +62,7 @@ export default function YdelseEnkeltBesoegPage() {
             På emner til et enkelt besøg
           </h2>
           <p
-            className="m-0 mb-7 max-w-[560px] text-[17px] font-light leading-[1.8] text-body"
+            className="m-0 mb-7 max-w-[560px] text-[21px] font-light leading-[1.8] text-body"
             style={{ textWrap: "pretty" }}
           >
             Fire timer rækker længere, end man tror. Her er nogle af de emner,
@@ -80,7 +80,7 @@ export default function YdelseEnkeltBesoegPage() {
               <h3 className="m-0 font-serif text-[26px] font-medium">
                 {t.title}
               </h3>
-              <p className="m-0 text-[16px] font-light leading-[1.8] text-body">
+              <p className="m-0 text-[20px] font-light leading-[1.8] text-body">
                 {t.body}
               </p>
             </div>

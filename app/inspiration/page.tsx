@@ -89,7 +89,7 @@ export default function InspirationPage() {
                 {a.title}
               </h2>
               <p
-                className="m-0 mb-[30px] text-[17px] font-light leading-[1.8] text-body"
+                className="m-0 mb-[30px] text-[21px] font-light leading-[1.8] text-body"
                 style={{ textWrap: "pretty" }}
               >
                 {a.teaser}

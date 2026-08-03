@@ -22,7 +22,13 @@ export default function YdelseTotalPage() {
       <YdelseHero
         image="/assets/slots/ydt-hero.webp"
         imageLabel="Panorama: skitsearbejde med farveprøver"
-        title="Total Interiør Design Service"
+        title={
+          <>
+            Total Interiør
+            <br className="md:hidden" />{" "}
+            Design Service
+          </>
+        }
         subtitle="Total renovering, nybyg og tilbygning"
       />
       <YdelseIntro>
@@ -35,7 +41,7 @@ export default function YdelseTotalPage() {
             Design &amp; indretning af nybyg og total renovering
           </h2>
           <p
-            className="m-0 text-[17px] font-light leading-[1.85] text-body"
+            className="m-0 text-[21px] font-light leading-[1.85] text-body"
             style={{ textWrap: "pretty" }}
           >
             Står du overfor en total renovering eller skal til at bygge et nyt

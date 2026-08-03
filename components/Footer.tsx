@@ -1,32 +1,32 @@
-import Link from "next/link";
-import SocialIcons, { SOCIAL_LINKS } from "./SocialIcons";
+import Link from"next/link";
+import SocialIcons, { SOCIAL_LINKS } from"./SocialIcons";
 
 // The design bundle's insta1-6.webp are empty-slot placeholder graphics —
 // use real project photos as stand-ins until actual Instagram posts are wired
 const INSTA_TILES = [
-  "/assets/box_koekken.png",
-  "/assets/step_sofa.png",
-  "/assets/proces_bad1.png",
-  "/assets/step_island.png",
-  "/assets/proces_sovevaerelse.png",
-  "/assets/box_stue.png",
+"/assets/box_koekken.png",
+"/assets/step_sofa.png",
+"/assets/proces_bad1.png",
+"/assets/step_island.png",
+"/assets/proces_sovevaerelse.png",
+"/assets/box_stue.png",
 ];
 
 const MENU_LINKS = [
-  { label: "Hjem", href: "/" },
-  { label: "Portfolio", href: "/projekter" },
-  { label: "Services", href: "/ydelser" },
-  { label: "Inspiration", href: "/inspiration" },
-  { label: "Om os", href: "/om-os" },
-  { label: "Kontakt", href: "/kontakt" },
+  { label:"Hjem", href:"/" },
+  { label:"Portfolio", href:"/projekter" },
+  { label:"Services", href:"/ydelser" },
+  { label:"Inspiration", href:"/inspiration" },
+  { label:"Om os", href:"/om-os" },
+  { label:"Kontakt", href:"/kontakt" },
 ];
 
 const SERVICE_LINKS = [
-  { label: "Om Studio Brinch", href: "/om-os" },
-  { label: "Services", href: "/ydelser" },
-  { label: "Privatlivspolitik", href: "/privatlivspolitik" },
-  { label: "Handelsbetingelser", href: "#" },
-  { label: "Hjem", href: "/" },
+  { label:"Om Studio Brinch", href:"/om-os" },
+  { label:"Services", href:"/ydelser" },
+  { label:"Privatlivspolitik", href:"/privatlivspolitik" },
+  { label:"Handelsbetingelser", href:"#" },
+  { label:"Hjem", href:"/" },
 ];
 
 function FooterLink({ label, href }: { label: string; href: string }) {
@@ -43,17 +43,18 @@ function FooterLink({ label, href }: { label: string; href: string }) {
 export default function Footer({ compact = false }: { compact?: boolean }) {
   return (
     <footer
+      data-reveal
       className={`bg-brown px-6 pb-16 md:px-16 md:pb-[70px] ${
-        compact ? "pt-20 md:pt-[90px]" : "pt-24 md:pt-[110px]"
+        compact ?"pt-20 md:pt-[90px]" :"pt-24 md:pt-[110px]"
       }`}
     >
       <div className="mx-auto max-w-[1320px]">
         {!compact && (
           <>
         <h2 className="m-0 mb-16 font-serif text-[34px] font-normal leading-[1.35] text-cream md:ml-[70px] md:text-[46px]">
-          <span className="om-w1">Follow</span>
+          <span className="">Follow</span>
           <br />
-          <span className="om-w2">
+          <span className="">
             <a
               href={SOCIAL_LINKS.Instagram}
               target="_blank"
@@ -93,7 +94,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Menu
               </h3>
-              <div className="flex flex-col gap-4 text-[16px] font-light">
+              <div className="flex flex-col gap-4 text-[20px] font-light">
                 {MENU_LINKS.map((l) => (
                   <FooterLink key={l.label} {...l} />
                 ))}
@@ -103,7 +104,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Kundeservice
               </h3>
-              <div className="flex flex-col gap-4 text-[16px] font-light">
+              <div className="flex flex-col gap-4 text-[20px] font-light">
                 {SERVICE_LINKS.map((l) => (
                   <FooterLink key={l.label} {...l} />
                 ))}
@@ -113,21 +114,23 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
               <h3 className="m-0 mb-5 font-serif text-[28px] font-medium text-cream">
                 Kontakt
               </h3>
-              <div className="flex flex-col gap-3.5 text-[16px] font-light">
+              <div className="flex flex-col gap-3.5 text-[20px] font-light">
                 <a
                   href="mailto:Kimmie@studio-brinch.dk"
-                  className="w-fit text-cream underline underline-offset-4 hover:text-rose max-md:text-[14px]"
+                  className="w-fit text-cream underline underline-offset-4 hover:text-rose max-md:text-[18px]"
                 >
                   Kimmie@studio-brinch.dk
                 </a>
                 <a
                   href="tel:+4541866431"
-                  className="w-fit text-cream underline underline-offset-4 hover:text-rose"
+                  className="w-fit font-sans text-[16px] font-light text-cream underline underline-offset-4 hover:text-rose"
                 >
                   +45 41 86 64 31
                 </a>
-                <div className="text-cream">CVR: 44717077</div>
-                <div className="mt-[22px] text-cream/65">
+                <div className="font-sans text-[16px] font-light text-cream">
+                  CVR: 44717077
+                </div>
+                <div className="mt-[22px] font-sans text-[16px] font-light text-cream">
                   © 2026 Studio Brinch
                 </div>
               </div>

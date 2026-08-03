@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const inputClasses =
-  "border-0 border-b border-hairline-dark bg-transparent py-2.5 font-serif text-[17px] font-light text-ink outline-none focus:border-accent";
+  "border-0 border-b border-hairline-dark bg-transparent py-2.5 font-serif text-[21px] font-light text-ink outline-none focus:border-accent";
 
 function Field({
   label,
@@ -97,7 +97,7 @@ export default function ContactForm({
         />
       </Field>
       {status === "sent" ? (
-        <p className="m-0 mt-3.5 font-serif text-[19px] italic text-accent">
+        <p className="m-0 mt-3.5 font-serif text-[21px] italic text-accent">
           Tak for din besked! Vi vender tilbage hurtigst muligt.
         </p>
       ) : (
@@ -105,12 +105,12 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === "sending"}
-            className="mt-5 w-max cursor-pointer border border-brown bg-brown px-[42px] py-[17px] font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-transparent hover:text-brown disabled:cursor-wait disabled:opacity-60 disabled:hover:bg-brown disabled:hover:text-cream"
+            className="mt-5 w-max max-md:self-center max-md:mx-auto cursor-pointer border border-brown bg-brown px-[42px] py-[17px] font-sans text-[13px] tracking-[3px] text-cream transition-colors hover:bg-transparent hover:text-brown disabled:cursor-wait disabled:opacity-60 disabled:hover:bg-brown disabled:hover:text-cream"
           >
             {status === "sending" ? "SENDER…" : "SEND BESKED"}
           </button>
           {status === "error" && (
-            <p className="m-0 text-[15px] font-light text-accent">{errorMsg}</p>
+            <p className="m-0 text-[19px] font-light text-accent">{errorMsg}</p>
           )}
         </>
       )}

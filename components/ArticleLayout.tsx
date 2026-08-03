@@ -43,7 +43,7 @@ export default function ArticleLayout({
         style={{ background: BAND }}
       >
         <div className="om-herotitle mx-auto max-w-[1160px]">
-          <div className="mb-[22px] font-sans text-[13px] tracking-[3px] text-cream/75">
+          <div className="mb-[22px] font-sans text-[13px] tracking-[3px] text-cream">
             {kicker}
           </div>
           <h1
@@ -51,7 +51,7 @@ export default function ArticleLayout({
             style={{ textWrap: "pretty" }}
           >
             {titleLead}{" "}
-            <span className="font-normal italic text-cream/85">
+            <span className="font-normal italic text-cream">
               {titleRest}
             </span>
           </h1>
@@ -86,7 +86,7 @@ export default function ArticleLayout({
         <div className="mx-auto grid max-w-[1160px] grid-cols-1 gap-8 lg:grid-cols-[360px_1fr] lg:gap-[90px]">
           <div className="hidden lg:block" />
           <p
-            className="m-0 text-[17px] font-light leading-[1.9] text-body"
+            className="m-0 text-[21px] font-light leading-[1.9] text-body"
             style={{ textWrap: "pretty" }}
           >
             {lead}
@@ -125,7 +125,7 @@ export default function ArticleLayout({
               {s.paragraphs.map((text, i) => (
                 <p
                   key={text.slice(0, 24)}
-                  className={`m-0 text-[17px] font-light leading-[1.9] text-body ${
+                  className={`m-0 text-[21px] font-light leading-[1.9] text-body ${
                     i > 0 ? "mt-16" : ""
                   }`}
                   style={{ textWrap: "pretty" }}
@@ -149,8 +149,8 @@ export default function ArticleLayout({
       </div>
 
       {/* CTA */}
-      <div className="bg-beige px-6 py-14 text-center md:px-16 md:py-[110px]" data-reveal>
-        <h2 className="m-0 mb-9 font-serif text-[32px] font-normal leading-[1.3] md:text-[42px]">
+      <div className="bg-beige px-6 py-12 text-center md:px-16 md:py-[110px]" data-reveal>
+        <h2 className="m-0 mb-6 font-serif text-[32px] font-normal leading-[1.3] md:mb-9 md:text-[42px]">
           Har du et projekt, jeg kan hjælpe dig med?
         </h2>
         <Link
@@ -159,7 +159,7 @@ export default function ArticleLayout({
         >
           BOOK EN SAMTALE
         </Link>
-        <div className="mt-7">
+        <div className="mt-4 md:mt-7">
           <Link
             href="/inspiration"
             className="border-b border-ink pb-1 font-sans text-[13px] tracking-[3px] text-ink"

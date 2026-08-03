@@ -76,7 +76,7 @@ export default function OmOsPage() {
               At skabe et æstetisk og funktionelt hjem for dig og dine
               nærmeste.
             </h2>
-            <div className="flex flex-col gap-[22px] text-[17px] font-light leading-[1.85] text-body">
+            <div className="flex flex-col gap-[22px] text-[21px] font-light leading-[1.85] text-body">
               <p className="m-0" style={{ textWrap: "pretty" }}>
                 Studio Brinch er grundlagt og ledet af indretningsarkitekten{" "}
                 <strong className="font-medium text-ink">Kimmie Brinch</strong>{" "}
@@ -111,7 +111,7 @@ export default function OmOsPage() {
       {/* Værdier */}
       <div className="bg-beige px-6 pt-24 pb-24 md:px-16 md:pt-[110px] md:pb-[120px]" data-reveal>
         <div className="reveal-grid mx-auto grid max-w-[1100px] grid-cols-1 items-start gap-y-14 md:grid-cols-2 md:gap-x-[90px]">
-          <div className="flex flex-col justify-end self-stretch">
+          <div className="flex flex-col justify-end self-stretch md:pb-12 md:pl-8">
             <div className="mb-[26px] flex items-center gap-[18px]">
               <div className="font-sans text-[14px] tracking-[5px] text-accent">
                 VÆRDIER
@@ -130,7 +130,7 @@ export default function OmOsPage() {
               <h3 className="m-0 mb-3.5 font-serif text-[32px] italic font-normal text-accent">
                 {v.title}
               </h3>
-              <p className="m-0 text-[16px] font-light leading-[1.8] text-body">
+              <p className="m-0 text-[20px] font-light leading-[1.8] text-body">
                 {v.body}
               </p>
             </div>

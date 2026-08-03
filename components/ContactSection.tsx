@@ -1,6 +1,6 @@
-import Overline from "./Overline";
-import SocialIcons from "./SocialIcons";
-import ContactForm from "./ContactForm";
+import Overline from"./Overline";
+import SocialIcons from"./SocialIcons";
+import ContactForm from"./ContactForm";
 
 export default function ContactSection() {
   return (
@@ -11,14 +11,14 @@ export default function ContactSection() {
       data-sec="kontakt"
     >
       <div className="mx-auto max-w-[1240px]">
-        <div className="mb-[70px]">
-          <Overline label="KONTAKT" className="om-w1 mb-3.5" />
-          <h2 className="om-w2 m-0 mb-5 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[46px]">
+        <div className="mb-[70px] max-md:text-center">
+          <Overline label="KONTAKT" className="mb-3.5 max-md:justify-center max-md:[&>div:first-child]:hidden" />
+          <h2 className="m-0 mb-5 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[46px]">
             Skal jeg hjælpe dig videre? Kontakt mig
           </h2>
           <p
-            className="om-v3 m-0 max-w-[680px] text-[17px] font-light leading-[1.7] text-body"
-            style={{ textWrap: "pretty" }}
+            className="m-0 max-w-[680px] text-[21px] font-light leading-[1.7] text-body"
+            style={{ textWrap:"pretty" }}
           >
             Vi starter med en{" "}
             <strong className="font-medium text-ink">uforpligtende snak</strong>
@@ -34,15 +34,15 @@ export default function ContactSection() {
               className="mb-4 h-[223px] w-[185px] overflow-hidden bg-hairline bg-cover bg-center bg-no-repeat"
               role="img"
               aria-label="Kimmie Brinch i studiet"
-              style={{ backgroundImage: "url('/assets/kimmie_portraet.jpg')" }}
+              style={{ backgroundImage:"url('/assets/kimmie_portraet.jpg')" }}
             />
             <h3 className="m-0 mb-1.5 font-serif text-[32px] font-medium text-ink">
               Kimmie Brinch
             </h3>
-            <div className="mb-4 font-serif text-[19px] italic text-body">
+            <div className="mb-4 font-sans text-[15px] font-light tracking-[0.5px] text-body">
               Ejer &amp; Indehaver
             </div>
-            <div className="mb-4 flex flex-col gap-4 text-[16px] font-light">
+            <div className="mb-4 flex flex-col gap-4 font-sans text-[16px] font-light">
               <a
                 href="tel:+4541866431"
                 className="w-fit text-ink underline underline-offset-4 hover:text-accent"

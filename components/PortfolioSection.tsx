@@ -26,7 +26,7 @@ const PROJECTS = [
 function SeProjekt() {
   return (
     <div className="inline-flex items-center gap-2.5 border-b border-cream/70 pb-1.5 font-sans text-[13px] tracking-[3px]">
-      SE PROJEKT <span className="text-[16px]">→</span>
+      SE PROJEKT <span className="text-[20px]">→</span>
     </div>
   );
 }
@@ -35,51 +35,80 @@ export default function PortfolioSection() {
   return (
     <div className="relative pb-28 md:pb-[120px]" data-reveal>
       {/* Mobile-only heading — the panorama that carries it on desktop is hidden there */}
-      <div className="px-6 pt-10 pb-2 font-serif text-[36px] font-normal leading-none text-ink md:hidden">
+      <div className="bg-beige px-6 pt-10 pb-6 text-center font-serif text-[36px] font-normal leading-none text-ink md:hidden">
         Portfolio
       </div>
-      {/* Full-bleed panorama (desktop only) */}
-      <Link
-        href="/projekter"
-        aria-label="Stue, samler familien"
-        className="relative hidden aspect-[3/1] min-h-[260px] overflow-hidden text-cream md:block"
-      >
-        <div
-          className="om-zoom om-parallax absolute inset-x-0 -inset-y-[12%] bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: "url('/assets/panorama_stue.jpg')",
-            backgroundPosition: "center 75%",
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(20,18,14,0.30) 0%, transparent 40%, rgba(20,18,14,0.55) 100%)",
-          }}
-        />
-        <div className="absolute left-[18px] top-5 font-serif text-[36px] font-normal leading-none text-cream md:text-[52px]">
-          Portfolio
-        </div>
-        <div className="absolute bottom-6 left-[18px] right-9 flex flex-col">
-          <h3 className="m-0 font-serif text-[22px] font-medium md:text-[28px]">
-            Stue | Samler familien
-          </h3>
-          <p
-            className="m-0 mt-3 hidden max-w-[520px] text-[15px] font-light leading-[1.7] text-cream/85 md:block"
-            style={{ textWrap: "pretty" }}
-          >
-            Fra køkkenet er et åbent rum, der kombinerer både spisestue og en
-            familievenlig stue, hvor hele familien kan mødes.
-          </p>
-        </div>
-        <div className="absolute bottom-6 right-9 hidden md:block">
-          <SeProjekt />
-        </div>
-      </Link>
+      {/* Full-bleed top band, split panorama + portrait (desktop only) */}
+      <div className="hidden aspect-[3/1] min-h-[260px] gap-3.5 md:grid md:grid-cols-[1.5fr_1fr]">
+        <Link
+          href="/projekter"
+          aria-label="Stue, samler familien"
+          className="relative overflow-hidden text-cream"
+        >
+          <div
+            className="om-zoom absolute inset-0 bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: "url('/assets/panorama_stue.jpg')",
+              backgroundPosition: "center 75%",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(20,18,14,0.30) 0%, transparent 40%, rgba(20,18,14,0.55) 100%)",
+            }}
+          />
+          <div className="absolute left-[18px] top-5 font-serif text-[36px] font-normal leading-none text-cream md:text-[52px]">
+            Portfolio
+          </div>
+          <div className="absolute bottom-6 left-[18px] right-9 flex flex-col">
+            <h3 className="m-0 font-serif text-[22px] font-medium md:text-[28px]">
+              Stue | Samler familien
+            </h3>
+            <p
+              className="m-0 mt-3 hidden max-w-[520px] text-[19px] font-light leading-[1.7] text-cream md:block"
+              style={{ textWrap: "pretty" }}
+            >
+              Fra køkkenet er et åbent rum, der kombinerer både spisestue og en
+              familievenlig stue, hvor hele familien kan mødes.
+            </p>
+          </div>
+          <div className="absolute bottom-6 right-9 hidden md:block">
+            <SeProjekt />
+          </div>
+        </Link>
+        <Link
+          href="/projekter"
+          aria-label="Badeværelse"
+          className="relative overflow-hidden text-cream"
+        >
+          <div
+            className="om-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/assets/portfolio_badevaerelse.jpg')",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 45%, rgba(20,18,14,0.55) 100%)",
+            }}
+          />
+          <div className="absolute bottom-6 left-[18px] right-9 flex flex-col">
+            <h3 className="m-0 font-serif text-[22px] font-medium md:text-[28px]">
+              Badeværelse
+            </h3>
+          </div>
+          <div className="absolute bottom-6 right-9 hidden md:block">
+            <SeProjekt />
+          </div>
+        </Link>
+      </div>
 
       {/* Edge-to-edge project tiles */}
-      <div className="reveal-grid relative grid grid-cols-1 gap-3.5 pt-2 md:grid-cols-3 md:pt-3.5">
+      <div className="reveal-grid relative grid grid-cols-1 gap-3.5 md:grid-cols-3 md:pt-3.5">
         {PROJECTS.map((p) => (
           <Link
             key={p.title}
@@ -88,7 +117,7 @@ export default function PortfolioSection() {
             className="relative block aspect-[4/5] overflow-hidden text-cream"
           >
             <div
-              className="om-zoom om-parallax absolute inset-x-0 -inset-y-[14%] bg-beige bg-cover bg-no-repeat"
+              className="om-zoom absolute inset-0 bg-beige bg-cover bg-no-repeat"
               style={{
                 backgroundImage: `url('${p.image}')`,
                 backgroundPosition: p.position,
@@ -101,17 +130,17 @@ export default function PortfolioSection() {
                   "linear-gradient(180deg, transparent 45%, rgba(20,18,14,0.55) 100%)",
               }}
             />
-            <div className="absolute bottom-3.5 left-[18px] right-9 flex flex-col text-cream md:top-[calc(100%-160px)]">
+            <div className="absolute bottom-3.5 left-[18px] right-9 flex flex-col text-cream md:top-[calc(100%-190px)]">
               <h3 className="m-0 font-serif text-[24px] font-medium md:text-[28px]">
                 {p.title}
               </h3>
               <p
-                className="m-0 mt-3 text-[15px] font-light leading-[1.7] text-cream/85"
+                className="m-0 mt-3 text-[19px] font-light leading-[1.7] text-cream"
                 style={{ textWrap: "pretty" }}
               >
                 {p.body}
               </p>
-              <div className="mt-4 self-end md:mt-auto">
+              <div className="mb-1.5 mt-4 self-end md:absolute md:bottom-4 md:right-0 md:m-0">
                 <SeProjekt />
               </div>
             </div>
@@ -131,7 +160,7 @@ export default function PortfolioSection() {
       {/* Google reviews */}
       <div className="mx-auto max-w-[1240px] px-6 md:px-10">
         <div className="mt-[72px]">
-          <h2 className="om-riser m-0 mb-11 text-center font-serif text-[32px] font-normal text-ink md:text-[44px]">
+          <h2 className="m-0 mb-11 text-center font-serif text-[32px] font-normal text-ink md:text-[44px]">
             Hvad vores kunder siger om Studio Brinch
           </h2>
           <div className="reveal-grid hidden gap-3 sm:grid sm:grid-cols-2 xl:grid-cols-4">

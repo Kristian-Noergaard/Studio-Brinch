@@ -69,13 +69,13 @@ export function ReviewCard({ review }: { review: Review }) {
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
           <div
-            className="flex h-[42px] w-[42px] flex-none items-center justify-center rounded-full text-[17px] font-medium text-offwhite"
+            className="flex h-[42px] w-[42px] flex-none items-center justify-center rounded-full text-[21px] font-medium text-offwhite"
             style={{ background: review.avatarBg }}
           >
             {review.initial}
           </div>
           <div className="min-w-0">
-            <div className="truncate text-[15px] font-medium text-ink">
+            <div className="truncate text-[19px] font-medium text-ink">
               {review.name}
             </div>
             <div className="text-[13px] font-light text-muted">
@@ -89,7 +89,7 @@ export function ReviewCard({ review }: { review: Review }) {
         ★★★★★
       </div>
       <p
-        className="m-0 text-[15px] font-light leading-[1.7] text-body"
+        className="m-0 text-[19px] font-light leading-[1.7] text-body"
         style={{ textWrap: "pretty" }}
       >
         {review.text}
@@ -98,7 +98,7 @@ export function ReviewCard({ review }: { review: Review }) {
         href="https://www.google.com/search?q=Studio+Brinch+Kolding+anmeldelser"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-auto w-fit text-[14px] font-medium text-accent underline underline-offset-4 hover:text-ink"
+        className="mt-auto w-fit text-[18px] font-medium text-accent underline underline-offset-4 hover:text-ink"
       >
         Læs mere
       </a>

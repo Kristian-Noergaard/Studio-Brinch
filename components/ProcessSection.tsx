@@ -1,8 +1,9 @@
-import Link from "next/link";
-import BeforeAfterSlider from "./BeforeAfterSlider";
+import Link from"next/link";
+import BeforeAfterSlider from"./BeforeAfterSlider";
+import MobileCarousel from"./MobileCarousel";
 
-const CARD_SHADOW = "0 2px 20px rgba(42,40,34,0.06)";
-const CARD_TEXT_BG = "#DDD8CC78";
+const CARD_SHADOW ="0 2px 20px rgba(42,40,34,0.06)";
+const CARD_TEXT_BG ="#DDD8CC78";
 
 function Card({
   image,
@@ -31,14 +32,14 @@ function Card({
           {title}
         </h3>
         <p
-          className="m-0 text-[15px] font-light leading-[1.75] text-body"
-          style={{ textWrap: "pretty" }}
+          className="m-0 text-[19px] font-light leading-[1.75] text-body"
+          style={{ textWrap:"pretty" }}
         >
           {body}
         </p>
         <Link
           href={ctaHref}
-          className="mt-auto self-center pt-[22px] text-[15px] font-medium text-accent underline underline-offset-[5px] hover:text-ink"
+          className="mt-auto self-center pt-[22px] text-[19px] font-medium text-accent underline underline-offset-[5px] hover:text-ink"
         >
           {ctaLabel}
         </Link>
@@ -55,26 +56,26 @@ export default function ProcessSection() {
       data-sec="proces"
     >
       <div className="mx-auto mb-14 grid max-w-[1320px] grid-cols-1 items-center justify-center gap-8 lg:grid-cols-[auto_auto] lg:gap-12">
-        <div className="text-left">
+        <div className="text-left max-md:text-center">
           <h2
             className="m-0 max-w-[640px] font-serif text-[36px] font-medium leading-[1.15] text-ink md:text-[50px]"
-            style={{ textWrap: "pretty" }}
+            style={{ textWrap:"pretty" }}
           >
-            <span className="om-w1">Et samarbejde i øjenhøjde</span>
+            <span className="">Et samarbejde i øjenhøjde</span>
             <br />
-            <span className="om-w2">fra idé til færdigt hjem</span>
+            <span className="">fra idé til færdigt hjem</span>
           </h2>
         </div>
         <div className="max-w-[480px] lg:justify-self-start">
-          <div className="om-w2 mb-3.5 flex items-center gap-[18px]">
+          <div className="mb-3.5 flex items-center gap-[18px] max-md:justify-center">
             <div className="font-sans text-[14px] tracking-[5px] text-accent">
               VORES PROCES
             </div>
-            <div className="h-px flex-1 bg-accent" />
+            <div className="h-px flex-1 bg-accent max-md:hidden" />
           </div>
           <p
-            className="om-v3 om-words m-0 text-left text-[18px] font-light leading-[1.7] text-body"
-            style={{ textWrap: "pretty" }}
+            className="m-0 text-left text-[22px] font-light leading-[1.7] text-body max-md:text-center"
+            style={{ textWrap:"pretty" }}
           >
             Vi starter med en{" "}
             <strong className="font-medium text-ink">uforpligtende snak</strong>
@@ -84,14 +85,15 @@ export default function ProcessSection() {
           </p>
         </div>
       </div>
-      <div className="reveal-grid mx-auto grid max-w-[1320px] grid-cols-1 gap-7 lg:grid-cols-3">
+      <div className="mx-auto max-w-[1320px]">
+        <MobileCarousel desktopClassName="md:gap-7 lg:grid-cols-3">
         <Card
           image={
             <div
               className="h-[280px] bg-beige bg-cover bg-no-repeat"
               style={{
-                backgroundImage: "url('/assets/om_studio.webp')",
-                backgroundPosition: "62% 30%",
+                backgroundImage:"url('/assets/om_studio.webp')",
+                backgroundPosition:"62% 30%",
               }}
               role="img"
               aria-label="Samarbejde med Studio Brinch"
@@ -107,8 +109,8 @@ export default function ProcessSection() {
             <div
               className="h-[280px] bg-beige bg-cover bg-no-repeat"
               style={{
-                backgroundImage: "url('/assets/box_koekken.png')",
-                backgroundPosition: "center 45%",
+                backgroundImage:"url('/assets/box_koekken.png')",
+                backgroundPosition:"center 45%",
               }}
               role="img"
               aria-label="Inspiration til din indretning"
@@ -132,15 +134,16 @@ export default function ProcessSection() {
           ctaLabel="Services"
           ctaHref="/ydelser"
         />
+        </MobileCarousel>
       </div>
       <div className="mx-auto -mb-[30px] mt-[60px] flex max-w-[1240px] flex-col items-center text-center">
         <Link
           href="/kontakt"
-          className="inline-flex items-center gap-3 text-[17px] font-medium text-accent hover:text-olive"
+          className="inline-flex items-center gap-3 text-[21px] font-medium text-accent hover:text-olive"
         >
-          Start med en uforpligtende snak <span className="text-[20px]">→</span>
+          Start med en uforpligtende snak <span className="text-[22px]">→</span>
         </Link>
-        <p className="m-0 mt-3 font-serif text-[19px] italic text-body">
+        <p className="m-0 mt-3 font-serif text-[21px] italic text-body">
           Ingen forpligtelser – bare en samtale om jeres drømme og muligheder.
         </p>
       </div>

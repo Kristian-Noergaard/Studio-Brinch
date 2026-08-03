@@ -16,7 +16,7 @@ export default function ReviewsCarousel() {
       <button
         onClick={prev}
         aria-label="Forrige anmeldelse"
-        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[18px] text-ink transition-colors hover:bg-ink hover:text-cream"
+        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[22px] text-ink transition-colors hover:bg-ink hover:text-cream"
       >
         ←
       </button>
@@ -35,7 +35,7 @@ export default function ReviewsCarousel() {
       <button
         onClick={next}
         aria-label="Næste anmeldelse"
-        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[18px] text-ink transition-colors hover:bg-ink hover:text-cream"
+        className="flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent font-serif text-[22px] text-ink transition-colors hover:bg-ink hover:text-cream"
       >
         →
       </button>

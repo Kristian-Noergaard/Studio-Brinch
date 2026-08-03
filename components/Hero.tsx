@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const SLIDES = [
@@ -13,7 +13,6 @@ const SLIDE_INTERVAL_MS = 5000;
 
 export default function Hero() {
   const [idx, setIdx] = useState(0);
-  const fadeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const t = setInterval(
@@ -21,19 +20,6 @@ export default function Hero() {
       SLIDE_INTERVAL_MS
     );
     return () => clearInterval(t);
-  }, []);
-
-  // Heading block fades and drifts up as the page scrolls
-  useEffect(() => {
-    const onScroll = () => {
-      const el = fadeRef.current;
-      if (!el) return;
-      const p = Math.min(window.scrollY / (window.innerHeight * 0.7), 1);
-      el.style.opacity = (1 - p * 0.95).toFixed(3);
-      el.style.translate = `0 ${(-p * 40).toFixed(1)}px`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -54,15 +40,12 @@ export default function Hero() {
             "linear-gradient(90deg, rgba(20,18,14,0.55) 0%, rgba(20,18,14,0.15) 55%, rgba(20,18,14,0.05) 100%), linear-gradient(180deg, rgba(20,18,14,0.25), transparent 30%), linear-gradient(0deg, rgba(20,18,14,0.55), transparent 45%)",
         }}
       />
-      <div
-        ref={fadeRef}
-        className="absolute left-6 right-6 bottom-28 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24"
-      >
+      <div className="absolute left-6 right-6 bottom-28 flex max-w-[820px] flex-col items-start gap-[30px] text-left text-cream md:left-16 md:right-auto md:bottom-24">
         <div className="-mb-3.5 hidden font-sans text-[14px] tracking-[5px] md:block">
           INDRETNINGSARKITEKTUR &amp; INTERIØRDESIGN
         </div>
         <h1
-          className="m-0 font-serif italic font-normal text-[34px] md:text-[48px] leading-[1.15]"
+          className="m-0 max-md:text-center font-serif italic font-normal text-[34px] md:text-[48px] leading-[1.15]"
           style={{ textWrap: "pretty" }}
         >
           Indretningsarkitekt og interiør design med speciale i renovering og
@@ -75,7 +58,7 @@ export default function Hero() {
       >
         SE VORES PROJEKTER
       </Link>
-      <div className="absolute bottom-[38px] left-5 right-auto flex justify-start gap-2.5 md:bottom-9 md:left-0 md:right-0 md:justify-center">
+      <div className="absolute bottom-5 left-5 right-auto flex justify-start gap-2.5 md:bottom-9 md:left-0 md:right-0 md:justify-center">
         {SLIDES.map((_, i) => (
           <div
             key={i}
