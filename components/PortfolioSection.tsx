@@ -1,24 +1,26 @@
 import Link from "next/link";
-import { REVIEWS, ReviewCard } from "./ReviewCard";
-import ReviewsCarousel from "./ReviewsCarousel";
+import MobileCarousel from "./MobileCarousel";
 
 const PROJECTS = [
   {
     image: "/assets/step_bad_sovevaerelse.webp",
     position: "52% center",
-    title: "Soveværelse | En afslappende oase",
+    name: "Soveværelse",
+    sub: "En afslappende oase",
     body: "Det primære soveværelse er en afslappende oase inspireret af farver fra naturen.",
   },
   {
     image: "/assets/step_island.png",
     position: "center",
-    title: "Køkken | Snedkerkøkken i egetræ",
+    name: "Køkken",
+    sub: "Snedkerkøkken i egetræ",
     body: "Det første du ser, når du åbner hoveddøren i dette total renoverede hus er kigget direkte ind til det håndlavede egetræskøkken.",
   },
   {
     image: "/assets/step_pigevaerelse.png",
     position: "center",
-    title: "Pige værelse | Pastel og enkelhed",
+    name: "Pige værelse",
+    sub: "Pastel og enkelhed",
     body: "Til pigeværelset designede jeg en multifunktionel seng med masser af opbevaring.",
   },
 ];
@@ -33,11 +35,7 @@ function SeProjekt() {
 
 export default function PortfolioSection() {
   return (
-    <div className="relative pb-28 md:pb-[120px]" data-reveal>
-      {/* Mobile-only heading — the panorama that carries it on desktop is hidden there */}
-      <div className="bg-beige px-6 pt-10 pb-6 text-center font-serif text-[36px] font-normal leading-none text-ink md:hidden">
-        Portfolio
-      </div>
+    <div className="relative pb-8 md:pb-0" data-reveal>
       {/* Full-bleed top band, split panorama + portrait (desktop only) */}
       <div className="hidden aspect-[3/1] min-h-[260px] gap-3.5 md:grid md:grid-cols-[1.5fr_1fr]">
         <Link
@@ -107,14 +105,48 @@ export default function PortfolioSection() {
         </Link>
       </div>
 
-      {/* Edge-to-edge project tiles */}
-      <div className="reveal-grid relative grid grid-cols-1 gap-3.5 md:grid-cols-3 md:pt-3.5">
+      {/* Mobile: stacked full-bleed panels with a caption row under each image.
+          reveal-grid makes each panel fade in on its own as it scrolls into view */}
+      <div className="reveal-grid flex flex-col gap-11 px-6 pt-7 md:hidden">
         {PROJECTS.map((p) => (
+          <Link key={p.name} href="/projekter" aria-label={`${p.name} | ${p.sub}`} className="block">
+            <div
+              className="h-[480px] bg-beige bg-cover bg-no-repeat"
+              style={{
+                backgroundImage: `url('${p.image}')`,
+                backgroundPosition: p.position,
+              }}
+            />
+            <div className="flex items-baseline justify-between gap-4 border-b border-hairline py-4">
+              <div className="flex-1">
+                <h3 className="m-0 mb-1 font-serif text-[22px] font-normal text-ink">
+                  {p.name}
+                </h3>
+                <div className="font-serif text-[16px] italic text-body">
+                  {p.sub}
+                </div>
+              </div>
+              <span className="flex-none whitespace-nowrap font-sans text-[11px] tracking-[3px] text-accent">
+                SE PROJEKT →
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Desktop: edge-to-edge project tile grid (the carousel component
+          renders a plain reveal grid from md up) */}
+      <div className="max-md:hidden px-6 pt-8 md:px-0 md:pt-0">
+        <MobileCarousel
+          slideClassName="w-[92%]"
+          desktopClassName="md:grid-cols-3 md:gap-3.5 md:pt-3.5"
+        >
+          {PROJECTS.map((p) => (
           <Link
-            key={p.title}
+            key={p.name}
             href="/projekter"
-            aria-label={p.title}
-            className="relative block aspect-[4/5] overflow-hidden text-cream"
+            aria-label={`${p.name} | ${p.sub}`}
+            className="relative block aspect-[4/5] overflow-hidden text-cream max-md:min-h-[540px]"
           >
             <div
               className="om-zoom absolute inset-0 bg-beige bg-cover bg-no-repeat"
@@ -132,7 +164,7 @@ export default function PortfolioSection() {
             />
             <div className="absolute bottom-3.5 left-[18px] right-9 flex flex-col text-cream md:top-[calc(100%-190px)]">
               <h3 className="m-0 font-serif text-[24px] font-medium md:text-[28px]">
-                {p.title}
+                {p.name} | {p.sub}
               </h3>
               <p
                 className="m-0 mt-3 text-[19px] font-light leading-[1.7] text-cream"
@@ -146,30 +178,17 @@ export default function PortfolioSection() {
             </div>
           </Link>
         ))}
+        </MobileCarousel>
       </div>
 
       <div className="mt-10 flex justify-center">
+        {/* Mobile: plain underlined text link; desktop: boxed button */}
         <Link
           href="/projekter"
-          className="border border-ink px-[34px] py-4 font-sans text-[13px] tracking-[3px] text-ink transition-colors hover:bg-ink hover:text-cream"
+          className="border-b border-ink pb-1.5 font-sans text-[12px] tracking-[3px] text-ink md:border md:border-ink md:px-[34px] md:py-4 md:pb-4 md:text-[13px] md:transition-colors md:hover:bg-ink md:hover:text-cream"
         >
-          SE ALLE PROJEKTER
+          SE ALLE PROJEKTER<span className="md:hidden"> →</span>
         </Link>
-      </div>
-
-      {/* Google reviews */}
-      <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-        <div className="mt-[72px]">
-          <h2 className="m-0 mb-11 text-center font-serif text-[32px] font-normal text-ink md:text-[44px]">
-            Hvad vores kunder siger om Studio Brinch
-          </h2>
-          <div className="reveal-grid hidden gap-3 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-            {REVIEWS.map((r) => (
-              <ReviewCard key={r.name} review={r} />
-            ))}
-          </div>
-          <ReviewsCarousel />
-        </div>
       </div>
     </div>
   );

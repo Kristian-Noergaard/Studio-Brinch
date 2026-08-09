@@ -6,10 +6,12 @@ export default function BeforeAfterSlider({
   before,
   after,
   label,
+  className = "h-[200px] md:h-[280px]",
 }: {
   before: string;
   after: string;
   label: string;
+  className?: string;
 }) {
   const [pct, setPct] = useState(17);
 
@@ -20,7 +22,7 @@ export default function BeforeAfterSlider({
 
   return (
     <div
-      className="relative h-[280px] overflow-hidden cursor-col-resize"
+      className={`relative overflow-hidden cursor-col-resize ${className}`}
       role="img"
       aria-label={label}
       onMouseMove={(e) => onMove(e.clientX, e.currentTarget)}

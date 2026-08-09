@@ -63,7 +63,7 @@ export function GoogleG() {
 export function ReviewCard({ review }: { review: Review }) {
   return (
     <div
-      className="om-lift flex flex-col gap-4 border border-hairline-light bg-offwhite px-[26px] py-7"
+      className="om-lift flex flex-col gap-4 border border-hairline-light bg-offwhite px-[26px] py-7 max-sm:gap-3 max-sm:px-6 max-sm:py-6"
       style={{ boxShadow: "3px 3px 8px rgba(42,40,34,0.08)" }}
     >
       <div className="flex items-center justify-between gap-3">

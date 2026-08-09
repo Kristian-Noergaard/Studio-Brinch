@@ -60,7 +60,7 @@ function ServiceText({
   return (
     <div
       className={`flex flex-col justify-center ${
-        compact ?"px-6 py-7" :"px-8 py-14 md:px-[72px] md:py-20"
+        compact ?"px-5 py-6" :"px-8 py-14 md:px-[72px] md:py-20"
       } ${beige ?"bg-beige" :"bg-offwhite"} ${className ??""}`}
       style={beige ? undefined : { boxShadow:"0 2px 20px rgba(42,40,34,0.06)" }}
     >
@@ -192,10 +192,17 @@ export default function YdelserPage() {
       </div>
 
       <div className="px-6 pt-24 pb-16 md:px-16 md:pt-[120px] md:pb-[90px]" data-reveal data-sec="proces">
-        <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center justify-center gap-8 lg:grid-cols-[auto_auto] lg:gap-12">
-          <div className="text-left max-md:text-center">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center justify-center gap-8 max-md:gap-5 lg:grid-cols-[auto_auto] lg:gap-12">
+          <div className="text-left">
+            {/* Mobile-only eyebrow above the heading; desktop keeps it in the right column */}
+            <div className="mb-3.5 flex items-center gap-[18px] md:hidden">
+              <div className="font-sans text-[14px] tracking-[5px] text-accent">
+                VORES YDELSER
+              </div>
+              <div className="h-px flex-1 bg-accent" />
+            </div>
             <h2
-              className="m-0 max-w-[640px] font-serif text-[36px] font-medium leading-[1.15] text-ink md:text-[50px]"
+              className="m-0 max-w-[640px] font-serif text-[30px] font-medium leading-[1.15] text-ink md:text-[50px]"
               style={{ textWrap:"pretty" }}
             >
               <span className="">Tre måder at samarbejde på,</span>
@@ -204,14 +211,14 @@ export default function YdelserPage() {
             </h2>
           </div>
           <div className="max-w-[480px] lg:justify-self-start">
-            <div className="mb-3.5 flex items-center gap-[18px] max-md:justify-center">
+            <div className="mb-3.5 flex items-center gap-[18px] max-md:hidden">
               <div className="font-sans text-[14px] tracking-[5px] text-accent">
                 VORES YDELSER
               </div>
               <div className="h-px flex-1 bg-accent max-md:hidden" />
             </div>
             <p
-              className="m-0 text-left text-[22px] font-light leading-[1.7] text-body max-md:text-center"
+              className="m-0 text-left text-[22px] font-light leading-[1.7] text-body max-md:text-[19px]"
               style={{ textWrap:"pretty" }}
             >
               Uanset projektets størrelse er tilgangen den samme:{" "}

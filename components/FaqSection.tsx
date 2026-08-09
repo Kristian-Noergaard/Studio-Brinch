@@ -38,7 +38,7 @@ export default function FaqSection() {
       <div className="mx-auto flex max-w-[820px] flex-col gap-16">
         <div className="flex flex-col items-center text-center">
           <Overline label="FAQ" centered className="mb-[22px]" />
-          <h2 className="m-0 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[42px]">
+          <h2 className="m-0 font-serif text-[40px] font-medium leading-[1.2] text-ink md:text-[42px]">
             Ofte stillede spørgsmål
           </h2>
         </div>

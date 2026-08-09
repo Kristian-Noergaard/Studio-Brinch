@@ -13,6 +13,12 @@ const NAV_LINKS = [
   { label: "KONTAKT", href: "/kontakt" },
 ];
 
+// Mobile menu overlay adds a Hjem entry the desktop nav doesn't have
+const MOBILE_NAV_LINKS = [
+  { label: "HJEM", href: "/" },
+  ...NAV_LINKS,
+];
+
 type Variant = "light" | "dark";
 // Open-menu panel color: matches the surface the logo sits on.
 // "dark" = over-photo pages, "cream"/"beige" = light pages, "band" = article brown.
@@ -101,8 +107,8 @@ export default function Header({
         aria-label={menuOpen ? "Luk menu" : "Åbn menu"}
         onClick={() => setMenuOpen((o) => !o)}
       >
-        {[0, 1, 2].map((i) => (
-          <span key={i} className="block w-6 h-px bg-current" />
+        {[0, 1].map((i) => (
+          <span key={i} className="block w-[26px] h-[1.5px] bg-current" />
         ))}
       </button>
 
@@ -112,24 +118,45 @@ export default function Header({
           style={bg === "band" ? { background: "#5E3F36" } : undefined}
         >
           <nav
-            className={`flex flex-1 flex-col items-center justify-center gap-9 font-serif text-[21px] tracking-[1.5px] ${
+            className={`flex flex-1 flex-col justify-center gap-9 px-6 pt-16 font-serif text-[38px] font-normal leading-none ${
               menuDark ? "text-cream" : "text-ink"
             }`}
           >
-            {NAV_LINKS.map((l) => (
+            {MOBILE_NAV_LINKS.map((l, i) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className={`text-current ${
-                  isActive(l.href) ? "border-b border-current pb-1" : ""
+                className={`om-menuitem w-fit text-current ${
+                  isActive(l.href)
+                    ? `italic ${menuDark ? "text-rose" : "text-accent"}`
+                    : ""
                 }`}
+                style={{ "--fxd": `${(i + 1) * 0.07}s` } as React.CSSProperties}
                 onClick={() => setMenuOpen(false)}
               >
-                {l.label}
+                {l.label.charAt(0) + l.label.slice(1).toLowerCase()}
               </Link>
             ))}
           </nav>
-          <div className="p-6 pb-10">
+          <div
+            className="om-menuitem px-6 pb-10"
+            style={{ "--fxd": "0.45s" } as React.CSSProperties}
+          >
+            <div
+              className={`mb-5 flex flex-col gap-[18px] font-sans text-[16px] font-light ${
+                menuDark ? "text-cream" : "text-ink"
+              }`}
+            >
+              <a href="tel:+4541866431" className="w-fit text-current">
+                +45 41 86 64 31
+              </a>
+              <a
+                href="mailto:Kimmie@studio-brinch.dk"
+                className="w-fit text-current"
+              >
+                Kimmie@studio-brinch.dk
+              </a>
+            </div>
             <SocialIcons
               className={
                 menuDark

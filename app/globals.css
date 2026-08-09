@@ -86,6 +86,35 @@ body {
   animation: om-herorise 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
+/* Mobile menu: staggered one-shot fade when the overlay opens, same
+   pure-opacity vocabulary as the scroll reveal */
+@keyframes om-menufade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.om-menuitem {
+  animation: om-menufade 0.7s ease both;
+  animation-delay: var(--fxd, 0s);
+}
+
+/* Hero entrance: same one-shot fade, staggered per element on page load */
+.om-loadfade {
+  animation: om-menufade 1s ease both;
+  animation-delay: var(--fxd, 0s);
+}
+
+/* Touch press feedback: taps dim briefly (hover doesn't exist on touch) */
+@media (hover: none) {
+  a:active,
+  button:active {
+    filter: brightness(0.85);
+  }
+}
+
 /* Horizontal card carousels (mobile): scroll area without a visible scrollbar */
 .no-scrollbar {
   scrollbar-width: none;
@@ -115,6 +144,8 @@ a:hover .om-zoom,
 @media (prefers-reduced-motion: reduce) {
   .om-fx,
   .om-fx-rise,
+  .om-menuitem,
+  .om-loadfade,
   .om-herotitle {
     opacity: 1 !important;
     animation: none !important;

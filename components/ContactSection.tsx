@@ -11,13 +11,20 @@ export default function ContactSection() {
       data-sec="kontakt"
     >
       <div className="mx-auto max-w-[1240px]">
-        <div className="mb-[70px] max-md:text-center">
-          <Overline label="KONTAKT" className="mb-3.5 max-md:justify-center max-md:[&>div:first-child]:hidden" />
-          <h2 className="m-0 mb-5 font-serif text-[34px] font-medium leading-[1.2] text-ink md:text-[46px]">
+        <div className="mb-[70px]">
+          {/* Mobile-only eyebrow matching the proces/services header style */}
+          <div className="mb-3.5 flex items-center gap-[18px] md:hidden">
+            <div className="font-sans text-[14px] tracking-[5px] text-accent">
+              KONTAKT
+            </div>
+            <div className="h-px flex-1 bg-accent" />
+          </div>
+          <Overline label="KONTAKT" className="mb-3.5 max-md:hidden" />
+          <h2 className="m-0 mb-5 font-serif text-[30px] font-medium leading-[1.2] text-ink md:text-[46px]">
             Skal jeg hjælpe dig videre? Kontakt mig
           </h2>
           <p
-            className="m-0 max-w-[680px] text-[21px] font-light leading-[1.7] text-body"
+            className="m-0 max-w-[680px] text-[21px] font-light leading-[1.7] text-body max-md:text-[19px]"
             style={{ textWrap:"pretty" }}
           >
             Vi starter med en{" "}

@@ -28,7 +28,64 @@ const BOX_BG = "rgba(253,252,249,0.45)";
 export default function StepsSection() {
   return (
     <div className="bg-beige overflow-clip" data-sec="forloebet">
-      <div className="relative">
+      {/* Mobile: dark photo band with hairline-divided numbered rows */}
+      <div className="relative bg-olive md:hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/assets/forloeb_1.webp')" }}
+          role="img"
+          aria-label="Forløbet: håndtegnet skitse"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "rgba(26,24,19,0.72)" }}
+        />
+        <div className="relative px-6 py-16 text-cream">
+          <div className="mb-3 text-center font-sans text-[11px] tracking-[5px] text-rose">
+            FORLØBET
+          </div>
+          <h2
+            className="m-0 mb-8 text-center font-serif text-[29px] font-normal italic"
+            style={{ textWrap: "pretty" }}
+          >
+            Fire trin fra dialog til opfølgning
+          </h2>
+          <div className="flex flex-col">
+            {STEPS.map((s) => (
+              <div
+                key={s.n}
+                className="flex gap-[18px] border-t border-cream/20 py-[18px]"
+              >
+                <div className="w-[34px] flex-none font-serif text-[22px] italic leading-[1.4] text-rose">
+                  0{s.n}
+                </div>
+                <div>
+                  <h3 className="m-0 mb-1 font-serif text-[20px] font-medium">
+                    {s.title}
+                  </h3>
+                  <p
+                    className="m-0 text-[15px] font-light leading-[1.6] text-cream/80"
+                    style={{ textWrap: "pretty" }}
+                  >
+                    {s.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center border-t border-cream/20 pt-7">
+            <Link
+              href="/kontakt"
+              className="whitespace-nowrap border border-cream/85 px-8 py-[15px] font-sans text-[12px] tracking-[3px] text-cream transition-colors hover:bg-cream/15"
+            >
+              BOOK EN SAMTALE
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop/tablet: panorama with translucent step cards (unchanged) */}
+      <div className="relative max-md:hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/assets/slots/forloeb-panorama.webp')" }}

@@ -86,6 +86,18 @@ export default function OmOsPage() {
                 mener vi, at ethvert hjem skal afspejle ejernes unikke behov og
                 personlighed.
               </p>
+              {/* Stacked layout: the image sits above the paragraph below
+                  instead of after the whole text block */}
+              <div className="om-zoomwrap relative aspect-[4/5] overflow-hidden bg-hairline lg:hidden">
+                <div
+                  className="om-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: "url('/assets/slots/om-koekken.webp')",
+                  }}
+                  role="img"
+                  aria-label="Detalje fra studiet eller et projekt"
+                />
+              </div>
               <p className="m-0" style={{ textWrap: "pretty" }}>
                 Hos Studio Brinch sætter vi en ære i at designe og indrette
                 rum, der passer til din livsstil. Om du er en familie, der
@@ -97,7 +109,7 @@ export default function OmOsPage() {
               </p>
             </div>
           </div>
-          <div className="om-zoomwrap relative aspect-[4/5] overflow-hidden bg-hairline">
+          <div className="om-zoomwrap relative aspect-[4/5] overflow-hidden bg-hairline max-lg:hidden">
             <div
               className="om-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: "url('/assets/slots/om-koekken.webp')" }}
