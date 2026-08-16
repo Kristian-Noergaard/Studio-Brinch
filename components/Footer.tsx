@@ -4,12 +4,12 @@ import SocialIcons, { SOCIAL_LINKS } from"./SocialIcons";
 // The design bundle's insta1-6.webp are empty-slot placeholder graphics —
 // use real project photos as stand-ins until actual Instagram posts are wired
 const INSTA_TILES = [
-"/assets/box_koekken.png",
-"/assets/step_sofa.png",
-"/assets/proces_bad1.png",
-"/assets/step_island.png",
-"/assets/proces_sovevaerelse.png",
-"/assets/box_stue.png",
+"/assets/box_koekken.webp",
+"/assets/step_sofa.webp",
+"/assets/proces_bad1.webp",
+"/assets/step_island.webp",
+"/assets/proces_sovevaerelse.webp",
+"/assets/box_stue.webp",
 ];
 
 const MENU_LINKS = [

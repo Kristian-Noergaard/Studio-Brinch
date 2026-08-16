@@ -5,9 +5,9 @@ import MobileCarousel from"@/components/MobileCarousel";
 import PageEffects from"@/components/PageEffects";
 
 export const metadata = {
-  title:"Services — Studio Brinch",
+  title:"Services | Studio Brinch",
   description:
-"Tre måder at samarbejde på — fra et enkelt besøg til total interiør design service ved renovering og nybyg.",
+"Tre måder at samarbejde på, fra et enkelt besøg til total interiør design service ved renovering og nybyg.",
 };
 
 function ServiceImage({

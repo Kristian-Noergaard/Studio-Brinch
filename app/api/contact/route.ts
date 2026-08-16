@@ -64,8 +64,8 @@ export async function POST(req: Request) {
         subject: `Ny henvendelse fra ${navn}`,
         text: [
           `Navn: ${navn}`,
-          `Telefon: ${telefon || "—"}`,
-          `Mail: ${mail || "—"}`,
+          `Telefon: ${telefon || "Ikke oplyst"}`,
+          `Mail: ${mail || "Ikke oplyst"}`,
           "",
           besked || "(ingen besked)",
         ].join("\n"),

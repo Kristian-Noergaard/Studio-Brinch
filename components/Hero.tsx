@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const SLIDES = [
-  "/assets/kimmie_04.jpg",
-  "/assets/kimmie_05.jpg",
-  "/assets/kimmie_06.jpg",
+  "/assets/kimmie_04.webp",
+  "/assets/kimmie_05.webp",
+  "/assets/kimmie_06.webp",
 ];
 
 // Mobile shows its own portrait-format slides (same count so the shared
 // index/indicators stay in sync)
 const MOBILE_SLIDES = [
-  "/assets/hero_mobil_1.jpg",
-  "/assets/hero_mobil_2.jpg",
+  "/assets/hero_mobil_1.webp",
+  "/assets/hero_mobil_2.webp",
   "/assets/hero_mobil_3.jpg",
 ];
 

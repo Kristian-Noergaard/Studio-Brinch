@@ -5,7 +5,7 @@ import SocialIcons from "@/components/SocialIcons";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
-  title: "Kontakt — Studio Brinch",
+  title: "Kontakt | Studio Brinch",
   description:
     "Har du et projekt, en idé eller står du over for den helt store renovering? Tag fat i Studio Brinch og få en uforpligtende snak.",
 };

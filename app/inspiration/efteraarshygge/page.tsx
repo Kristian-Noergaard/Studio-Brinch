@@ -3,7 +3,7 @@ import content from "./content.json";
 
 export const metadata = {
   title:
-    "Efterårshygge: Indretningstips til en varm og hyggelig efterårsstemning — Studio Brinch",
+    "Efterårshygge: Indretningstips til en varm og hyggelig efterårsstemning | Studio Brinch",
   description: content.intro,
 };
 

@@ -5,9 +5,9 @@ import PageEffects from "@/components/PageEffects";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "Portfolio — Studio Brinch",
+  title: "Portfolio | Studio Brinch",
   description:
-    "Fem udvalgte projekter fra Studio Brinch — rum, der er skabt til at blive levet i.",
+    "Fem udvalgte projekter fra Studio Brinch, rum, der er skabt til at blive levet i.",
 };
 
 function ProjectTile({
@@ -87,7 +87,7 @@ export default function ProjekterPage() {
     <main className="bg-cream text-ink">
       <PageEffects />
       <Header variant="dark" />
-      <PageHero kicker="PORTFOLIO  ·  FEM UDVALGTE PROJEKTER" title="Rum, der er skabt til at blive levet i">
+      <PageHero kicker="PORTFOLIO  ·  FEM RUM · ÉT HJEM" title="Rum, der er skabt til at blive levet i">
         <p
           className="mx-auto max-w-[540px] text-[21px] font-light leading-[1.7] text-body"
           style={{ textWrap: "pretty" }}
@@ -136,8 +136,9 @@ export default function ProjekterPage() {
           />
           <ProjectTile
             href="/projekter/sovevaerelse"
-            image="/assets/portfolio_badevaerelse.jpg"
+            image="/assets/portfolio_badevaerelse.webp"
             title="Badeværelse"
+            subtitle="Ro og enkelthed"
             heightClassName="h-[600px] md:h-[560px]"
             className="max-md:order-5 max-md:mt-2 md:col-span-4 md:mt-2"
           />

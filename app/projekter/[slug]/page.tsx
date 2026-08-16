@@ -103,7 +103,7 @@ export async function generateMetadata({
   const p = PROJECTS.find((x) => x.slug === slug);
   return p
     ? {
-        title: `${p.title} | ${p.subtitle} — Studio Brinch`,
+        title: `${p.title} | ${p.subtitle} | Studio Brinch`,
         description: p.paragraphs[1],
       }
     : {};

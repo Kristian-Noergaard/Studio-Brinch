@@ -1,16 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageEffects from "@/components/PageEffects";
-import {
-  YdelseHero,
-  YdelseIntro,
-  YdelseCta,
-} from "@/components/YdelseSections";
+import { YdelseHero, YdelseCta } from "@/components/YdelseSections";
 
 export const metadata = {
-  title: "Et enkelt besøg — Studio Brinch",
+  title: "Et enkelt besøg | Studio Brinch",
   description:
-    "En fire timers konsultation i dit hjem — sparring om farver, materialer, renovering og indretning.",
+    "En fire timers konsultation i dit hjem, sparring om farver, materialer, renovering og indretning.",
 };
 
 const TOPICS = [
@@ -44,47 +40,38 @@ export default function YdelseEnkeltBesoegPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="light" />
+      <Header variant="dark" menuBg="beige" />
       <YdelseHero
         image="/assets/slots/yde-hero.webp"
         imageLabel="Panorama: lys stue"
         title="Et enkelt besøg"
-        subtitle="Sparring"
+        tagline="fire timers sparring i dit hjem"
+        body="Med et enkelt besøg tilbyder jeg en fire timers konsultation i dit hjem. Her kan du få sparring om alt, hvad du har brug for designmæssig hjælp til."
       />
-      <YdelseIntro>
-        Med et enkelt besøg tilbyder jeg en fire timers konsultation i dit
-        hjem. Her kan du få sparring om alt, hvad du har brug for designmæssig
-        hjælp til.
-      </YdelseIntro>
-      <div className="relative overflow-hidden px-6 pb-16 pt-2.5 md:px-16" data-reveal>
-        <div className="mx-auto max-w-[1000px]">
+      <div className="bg-cream px-6 py-16 md:px-16 md:py-[110px]" data-reveal>
+        <div className="mx-auto max-w-[1180px]">
           <h2 className="m-0 py-2.5 font-serif text-[32px] font-medium leading-[1.05] md:text-[44px]">
-            På emner til et enkelt besøg
+            Eksempler på emner til et enkelt besøg
           </h2>
           <p
-            className="m-0 mb-7 max-w-[560px] text-[21px] font-light leading-[1.8] text-body"
+            className="m-0 mb-10 max-w-[560px] text-[21px] font-light leading-[1.8] text-body md:mb-14"
             style={{ textWrap: "pretty" }}
           >
             Fire timer rækker længere, end man tror. Her er nogle af de emner,
             et besøg ofte handler om.
           </p>
-        </div>
-        <div className="mx-auto mt-3 max-w-[1000px]">
-          {TOPICS.map((t, i) => (
-            <div
-              key={t.title}
-              className={`grid grid-cols-1 items-baseline gap-3 py-[30px] md:grid-cols-[340px_1fr] md:gap-10 ${
-                i > 0 ? "border-t border-hairline-dark" : ""
-              }`}
-            >
-              <h3 className="m-0 font-serif text-[26px] font-medium">
-                {t.title}
-              </h3>
-              <p className="m-0 text-[20px] font-light leading-[1.8] text-body">
-                {t.body}
-              </p>
-            </div>
-          ))}
+          <div className="reveal-grid grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-3 md:gap-y-12">
+            {TOPICS.map((t) => (
+              <div key={t.title} className="border-t border-hairline-dark pt-6">
+                <h3 className="m-0 mb-2.5 font-serif text-[24px] font-medium">
+                  {t.title}
+                </h3>
+                <p className="m-0 text-[16px] font-light leading-[1.75] text-body">
+                  {t.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <YdelseCta price="Prisen for et enkelt besøg er 5.000 kr." />

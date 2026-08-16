@@ -1,50 +1,68 @@
 import Link from "next/link";
 
 export function YdelseHero({
+  kicker = "SERVICES",
+  title,
+  tagline,
+  body,
+  bodyExtra,
   image,
   imageLabel,
-  title,
-  subtitle,
+  fillScreen = false,
 }: {
+  kicker?: string;
+  title: string;
+  tagline: string;
+  body: string;
+  bodyExtra?: string;
   image: string;
   imageLabel: string;
-  title: React.ReactNode;
-  subtitle: string;
+  fillScreen?: boolean;
 }) {
   return (
-    <div className="relative h-[62vh] min-h-[480px] overflow-hidden bg-hairline">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${image}')` }}
-        role="img"
-        aria-label={imageLabel}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(20,18,14,0.55), transparent 55%), linear-gradient(180deg, rgba(20,18,14,0.35), transparent 30%)",
-        }}
-      />
-      <h1 className="om-herotitle pointer-events-none absolute inset-x-0 bottom-10 m-0 px-6 text-center font-serif text-[36px] font-normal leading-[1.2] text-cream md:bottom-14 md:px-10 md:text-center md:text-[clamp(24px,3vw,60px)] md:leading-[1.25] md:whitespace-nowrap">
-        {title} <span className="hidden text-rose md:inline">|</span>{" "}
-        <span className="mt-1.5 block text-[24px] italic md:mt-0 md:inline md:text-[1em]">
-          {subtitle}
-        </span>
-      </h1>
-    </div>
-  );
-}
-
-export function YdelseIntro({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="px-6 pt-24 pb-10 md:px-16 md:pt-[120px]" data-reveal>
-      <p
-        className="mx-auto max-w-[1000px] font-serif text-[26px] leading-[1.45] text-ink md:max-w-[1240px] md:text-[36px]"
-        style={{ textWrap: "pretty" }}
-      >
-        {children}
-      </p>
+    <div
+      className={`bg-cream px-6 pt-32 pb-14 md:px-16 md:pt-[190px] md:pb-20 ${
+        fillScreen ? "flex min-h-screen flex-col justify-center" : ""
+      }`}
+    >
+      <div className="om-herotitle mx-auto grid w-full max-w-[1320px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="order-2 lg:order-1">
+          <div className="mb-[18px] flex items-center gap-[18px]">
+            <div className="font-sans text-[14px] tracking-[5px] text-accent">
+              {kicker}
+            </div>
+            <div className="h-px w-16 bg-accent" />
+          </div>
+          <h1
+            className="m-0 mb-6 font-serif text-[34px] font-medium leading-[1.15] text-ink md:text-[58px]"
+            style={{ textWrap: "pretty" }}
+          >
+            {title}, <em className="font-normal">{tagline}</em>
+          </h1>
+          <p
+            className="m-0 max-w-[54ch] text-[19px] font-light leading-[1.75] text-body md:text-[21px]"
+            style={{ textWrap: "pretty" }}
+          >
+            {body}
+          </p>
+          {bodyExtra && (
+            <p
+              className="m-0 mt-6 max-w-[54ch] text-[19px] font-light leading-[1.75] text-body md:text-[21px]"
+              style={{ textWrap: "pretty" }}
+            >
+              {bodyExtra}
+            </p>
+          )}
+        </div>
+        <div className="om-zoomwrap order-1 relative aspect-[4/5] overflow-hidden bg-hairline lg:order-2">
+          <div
+            className="om-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url('${image}')` }}
+            role="img"
+            aria-label={imageLabel}
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -55,6 +73,7 @@ export function TripleSection({
   items,
   ghost,
   grey = false,
+  dark = false,
   last = false,
 }: {
   title: string;
@@ -62,18 +81,21 @@ export function TripleSection({
   items: { title: string; body: string }[];
   ghost?: string;
   grey?: boolean;
+  dark?: boolean;
   last?: boolean;
 }) {
   return (
     <div
       className={`relative overflow-hidden px-6 pt-16 md:px-16 md:pt-[70px] ${
         last ? "pb-[90px]" : "pb-16"
-      } ${grey ? "bg-steps-grey" : ""}`}
+      } ${dark ? "bg-brown" : grey ? "bg-steps-grey" : ""}`}
       data-reveal
     >
       {ghost && (
         <div
-          className="pointer-events-none absolute left-[70px] top-5 hidden select-none font-serif text-[460px] italic leading-[0.8] text-accent md:block"
+          className={`pointer-events-none absolute left-[70px] top-5 hidden select-none font-serif text-[460px] italic leading-[0.8] md:block ${
+            dark ? "text-rose" : "text-accent"
+          }`}
           style={{ opacity: 0.08 }}
           aria-hidden
         >
@@ -81,14 +103,24 @@ export function TripleSection({
         </div>
       )}
       <div className="relative mx-auto max-w-[1100px]">
-        <h2 className="m-0 py-2.5 font-serif text-[32px] font-medium leading-[1.05] md:text-[44px]">
+        <h2
+          className={`m-0 py-2.5 font-serif text-[32px] font-medium leading-[1.05] md:text-[44px] ${
+            dark ? "text-cream" : ""
+          }`}
+        >
           {ghost && (
-            <span className="italic text-accent md:hidden">{ghost}. </span>
+            <span
+              className={`italic md:hidden ${dark ? "text-rose" : "text-accent"}`}
+            >
+              {ghost}.{" "}
+            </span>
           )}
           {title}
         </h2>
         <p
-          className="m-0 mb-7 max-w-[560px] text-[21px] font-light leading-[1.8] text-body"
+          className={`m-0 mb-7 max-w-[560px] text-[21px] font-light leading-[1.8] ${
+            dark ? "text-cream/80" : "text-body"
+          }`}
           style={{ textWrap: "pretty" }}
         >
           {lead}
@@ -100,13 +132,25 @@ export function TripleSection({
               className={
                 i === 0
                   ? "pb-8 md:pb-0 md:pr-10"
-                  : "border-t border-hairline-dark pt-8 md:border-t-0 md:border-l md:px-10 md:pt-0"
+                  : `pt-8 md:border-t-0 md:border-l md:px-10 md:pt-0 ${
+                      dark
+                        ? "border-t border-cream/15"
+                        : "border-t border-hairline-dark"
+                    }`
               }
             >
-              <h3 className="m-0 mb-3 font-serif text-[26px] font-medium">
+              <h3
+                className={`m-0 mb-3 font-serif text-[26px] font-medium ${
+                  dark ? "text-cream" : ""
+                }`}
+              >
                 {item.title}
               </h3>
-              <p className="m-0 text-[20px] font-light leading-[1.8] text-body">
+              <p
+                className={`m-0 text-[20px] font-light leading-[1.8] ${
+                  dark ? "text-cream/80" : "text-body"
+                }`}
+              >
                 {item.body}
               </p>
             </div>

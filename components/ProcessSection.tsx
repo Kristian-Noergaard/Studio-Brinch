@@ -1,5 +1,4 @@
 import Link from"next/link";
-import BeforeAfterSlider from"./BeforeAfterSlider";
 import MobileCarousel from"./MobileCarousel";
 
 const CARD_SHADOW ="0 2px 20px rgba(42,40,34,0.06)";
@@ -82,7 +81,7 @@ export default function ProcessSection() {
           >
             <span className="">Et samarbejde i øjenhøjde</span>
             <br className="max-md:hidden" />
-            <span className="md:hidden"> — </span>
+            <span className="md:hidden">, </span>
             <span className="">fra idé til færdigt hjem</span>
           </h2>
         </div>
@@ -135,7 +134,7 @@ export default function ProcessSection() {
             <div
               className="h-[200px] bg-beige bg-cover bg-no-repeat md:h-[280px]"
               style={{
-                backgroundImage:"url('/assets/box_koekken.png')",
+                backgroundImage:"url('/assets/box_koekken.webp')",
                 backgroundPosition:"center 45%",
               }}
               role="img"
@@ -150,10 +149,14 @@ export default function ProcessSection() {
         />
         <Card
           image={
-            <BeforeAfterSlider
-              before="/assets/box_stue_empty.png"
-              after="/assets/box_stue.png"
-              label="Før og efter, projektstyring fra start til slut"
+            <div
+              className="h-[200px] bg-beige bg-cover bg-no-repeat md:h-[280px]"
+              style={{
+                backgroundImage:"url('/assets/box_stue.webp')",
+                backgroundPosition:"center 45%",
+              }}
+              role="img"
+              aria-label="Projektstyring fra start til slut"
             />
           }
           title="Projektstyring fra start til slut"

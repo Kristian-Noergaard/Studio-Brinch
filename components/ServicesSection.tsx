@@ -6,15 +6,15 @@ const SERVICES = [
     title:"Design besøget",
     body:"For dem der vil have hurtig retning og sparring. Et intensivt besøg i jeres hjem, hvor vi analyserer rummene og giver konkrete forslag til indretning, farver og møbler.",
     mobileBody:"For dem der vil have hurtig retning og sparring. Et intensivt besøg i jeres hjem, hvor vi analyserer rummene og giver konkrete forslag til indretning, farver og møbler.",
-    image:"/assets/service_1.png",
-    mobileImage:"/assets/service_1.png",
+    image:"/assets/service_1.webp",
+    mobileImage:"/assets/service_1.webp",
     imageLabel:"Farvekort med varme neutrale toner",
     overlay: null,
   },
   {
     title:"Hjemmekoncept",
     body:"Et skræddersyet interiørkoncept for flere rum, hvor vi skaber sammenhæng i funktion, materialer og stemning. Vi kombinerer æstetik med hverdagsflow, så rummet både føles smukt og fungerer.",
-    mobileBody:"Et skræddersyet interiørkoncept for flere rum med sammenhæng i funktion, materialer og stemning — én rød tråd gennem hele hjemmet.",
+    mobileBody:"Et skræddersyet interiørkoncept for flere rum med sammenhæng i funktion, materialer og stemning, én rød tråd gennem hele hjemmet.",
     image:"/assets/service_2b.webp",
     mobileImage:"/assets/service_2a.webp",
     imageLabel:"Håndtegnet skitse af køkken højskabe",
@@ -23,9 +23,9 @@ const SERVICES = [
   {
     title:"Fuldt designforløb",
     body:"Et komplet designforløb til nybyg, renovering eller totalindretning. Vi guider dig gennem alle valg, fra planløsning til farver, inventar og styling. Hele vejen sikrer vi en rød tråd, der matcher din stil og hverdagsbehov.",
-    mobileBody:"Et komplet designforløb til nybyg, renovering eller totalindretning. Vi følger projektet fra første streg til færdigt hjem — inkl. plantegninger, materialevalg og koordinering.",
-    image:"/assets/service_3.jpg",
-    mobileImage:"/assets/service_3.jpg",
+    mobileBody:"Et komplet designforløb til nybyg, renovering eller totalindretning. Vi følger projektet fra første streg til færdigt hjem, inkl. plantegninger, materialevalg og koordinering.",
+    image:"/assets/service_3.webp",
+    mobileImage:"/assets/service_3.webp",
     imageLabel:"Færdigt snedkerkøkken i egetræ",
     overlay: { src:"/assets/service_3b.webp", aspect:"3/4" },
   },
@@ -50,7 +50,7 @@ export default function ServicesSection() {
               style={{ textWrap:"pretty" }}
             >
               <span className="">Fra idé til virkelighed</span>
-              <span className="md:hidden"> — </span>
+              <span className="md:hidden">, </span>
               <span className="max-md:hidden">
                 ,<br />
               </span>

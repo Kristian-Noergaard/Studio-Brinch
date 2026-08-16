@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import PageEffects from "@/components/PageEffects";
 
 export const metadata = {
-  title: "Inspiration — Studio Brinch",
+  title: "Inspiration | Studio Brinch",
   description:
     "Guides og inspiration fra studiet, til et hjem med ro, varme og karakter.",
 };

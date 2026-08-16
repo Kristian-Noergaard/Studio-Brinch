@@ -3,59 +3,29 @@ import Footer from "@/components/Footer";
 import PageEffects from "@/components/PageEffects";
 import {
   YdelseHero,
-  YdelseIntro,
   TripleSection,
   YdelseCta,
 } from "@/components/YdelseSections";
 
 export const metadata = {
-  title: "Total Interiør Design Service — Studio Brinch",
+  title: "Total Interiør Design Service | Studio Brinch",
   description:
-    "Total renovering, nybyg og tilbygning — fuld service-indretning af hele dit hjem.",
+    "Total renovering, nybyg og tilbygning, fuld service-indretning af hele dit hjem.",
 };
 
 export default function YdelseTotalPage() {
   return (
     <main className="bg-cream text-ink">
       <PageEffects />
-      <Header variant="light" />
+      <Header variant="dark" menuBg="beige" />
       <YdelseHero
         image="/assets/slots/ydt-hero.webp"
         imageLabel="Panorama: skitsearbejde med farveprøver"
-        title={
-          <>
-            Total Interiør
-            <br className="md:hidden" />{" "}
-            Design Service
-          </>
-        }
-        subtitle="Total renovering, nybyg og tilbygning"
+        title="Total interiør design"
+        tagline="nybyg, total renovering og tilbygning"
+        body="Med total interiør design service skaber vi sammen dit drømmehjem, hvad enten det drejer sig om nybyg, total renovering eller tilbygning."
+        bodyExtra="Står du overfor en total renovering eller skal til at bygge et nyt hus, skal du igennem en længere proces, hvor der løbende skal træffes utrolig mange valg om, hvordan dit nye hjem skal designes og fungere. Det er her, Studio Brinch kan skabe en merværdi til din drømmebolig og give dig ro i maven gennem implementeringen. Vi guider, inspirerer og projektstyrer gennem de utroligt mange valg omkring indretning, materialer, farver og inventar. Studio Brinch sikrer et sammenhængende hjem, hvor din personlige stil og hverdagens behov er i fokus."
       />
-      <YdelseIntro>
-        Med Total Interiør Design Service skaber vi sammen dit drømmehjem, hvad
-        enten det drejer sig om nybyg, total renovering eller tilbygning.
-      </YdelseIntro>
-      <div className="px-6 pb-10 pt-4 md:px-16" data-reveal>
-        <div className="mx-auto max-w-[1000px]">
-          <h2 className="m-0 mb-6 font-serif text-[30px] font-medium md:text-[38px]">
-            Design &amp; indretning af nybyg og total renovering
-          </h2>
-          <p
-            className="m-0 text-[21px] font-light leading-[1.85] text-body"
-            style={{ textWrap: "pretty" }}
-          >
-            Står du overfor en total renovering eller skal til at bygge et nyt
-            hus, skal du igennem en længere proces, hvor der løbende skal
-            træffes utrolig mange valg om, hvordan dit nye hjem skal designes og
-            fungere. Det er her, Studio Brinch kan skabe en merværdi til din
-            drømmebolig og give dig ro i maven gennem implementeringen. Vi
-            guider, inspirerer og projektstyrer gennem de utroligt mange valg
-            omkring indretning, materialer, farver og inventar. Studio Brinch
-            sikrer et sammenhængende hjem, hvor din personlige stil og
-            hverdagens behov er i fokus.
-          </p>
-        </div>
-      </div>
       <TripleSection
         ghost="1"
         title="Opstart"

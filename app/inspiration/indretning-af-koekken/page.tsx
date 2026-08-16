@@ -3,7 +3,7 @@ import content from "./content.json";
 
 export const metadata = {
   title:
-    "Indretning af køkken: Sådan får du et køkken, hvor form og funktion mødes — Studio Brinch",
+    "Indretning af køkken: Sådan får du et køkken, hvor form og funktion mødes | Studio Brinch",
   description: content.intro,
 };
 

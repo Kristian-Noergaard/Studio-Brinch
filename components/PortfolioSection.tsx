@@ -10,14 +10,14 @@ const PROJECTS = [
     body: "Det primære soveværelse er en afslappende oase inspireret af farver fra naturen.",
   },
   {
-    image: "/assets/step_island.png",
+    image: "/assets/step_island.webp",
     position: "center",
     name: "Køkken",
     sub: "Snedkerkøkken i egetræ",
     body: "Det første du ser, når du åbner hoveddøren i dette total renoverede hus er kigget direkte ind til det håndlavede egetræskøkken.",
   },
   {
-    image: "/assets/step_pigevaerelse.png",
+    image: "/assets/step_pigevaerelse.webp",
     position: "center",
     name: "Pige værelse",
     sub: "Pastel og enkelhed",
@@ -37,7 +37,13 @@ export default function PortfolioSection() {
   return (
     <div className="relative pb-8 md:pb-0" data-reveal>
       {/* Full-bleed top band, split panorama + portrait (desktop only) */}
-      <div className="hidden aspect-[3/1] min-h-[260px] gap-3.5 md:grid md:grid-cols-[1.5fr_1fr]">
+      <div
+        className="hidden aspect-[3/1] min-h-[260px] gap-3.5 md:grid md:grid-cols-[1.5fr_1fr]"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--color-beige) 0%, var(--color-cream) 15%, var(--color-cream) 100%)",
+        }}
+      >
         <Link
           href="/projekter"
           aria-label="Stue, samler familien"
@@ -46,7 +52,7 @@ export default function PortfolioSection() {
           <div
             className="om-zoom absolute inset-0 bg-cover bg-no-repeat"
             style={{
-              backgroundImage: "url('/assets/panorama_stue.jpg')",
+              backgroundImage: "url('/assets/panorama_stue.webp')",
               backgroundPosition: "center 75%",
             }}
           />
@@ -78,13 +84,13 @@ export default function PortfolioSection() {
         </Link>
         <Link
           href="/projekter"
-          aria-label="Badeværelse"
+          aria-label="Badeværelse, ro og enkelthed"
           className="relative overflow-hidden text-cream"
         >
           <div
             className="om-zoom absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/assets/portfolio_badevaerelse.jpg')",
+              backgroundImage: "url('/assets/portfolio_badevaerelse.webp')",
             }}
           />
           <div
@@ -96,8 +102,15 @@ export default function PortfolioSection() {
           />
           <div className="absolute bottom-6 left-[18px] right-9 flex flex-col">
             <h3 className="m-0 font-serif text-[22px] font-medium md:text-[28px]">
-              Badeværelse
+              Badeværelse | Ro og enkelthed
             </h3>
+            <p
+              className="m-0 mt-3 hidden max-w-[520px] text-[19px] font-light leading-[1.7] text-cream md:block"
+              style={{ textWrap: "pretty" }}
+            >
+              Badeværelset ligger i direkte forlængelse af soveværelset, så
+              det er et sted, du ønsker at starte og afslutte din dag.
+            </p>
           </div>
           <div className="absolute bottom-6 right-9 hidden md:block">
             <SeProjekt />

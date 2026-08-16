@@ -16,9 +16,9 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Studio Brinch — Indretningsarkitekt & interiørdesign",
+  title: "Studio Brinch | Indretningsarkitekt & interiørdesign",
   description:
-    "Indretningsarkitekt og interiør design med speciale i renovering og nybyg. Studio Brinch skaber æstetiske og funktionelle hjem — fra idé til færdigt hjem.",
+    "Indretningsarkitekt og interiør design med speciale i renovering og nybyg. Studio Brinch skaber æstetiske og funktionelle hjem, fra idé til færdigt hjem.",
 };
 
 export default function RootLayout({

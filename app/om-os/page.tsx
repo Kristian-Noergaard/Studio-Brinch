@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import PageEffects from "@/components/PageEffects";
 
 export const metadata = {
-  title: "Om os — Studio Brinch",
+  title: "Om os | Studio Brinch",
   description:
     "Studio Brinch er et indretnings- og interiørdesign-studio i Kolding, ledet af Kimmie Brinch.",
 };
