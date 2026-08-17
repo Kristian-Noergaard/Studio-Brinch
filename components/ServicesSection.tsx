@@ -3,7 +3,8 @@ import MobileCarousel from"./MobileCarousel";
 
 const SERVICES = [
   {
-    title:"Design besøget",
+    title:"Et enkelt besøg",
+    price:"Pris, 5.000 kr.",
     body:"For dem der vil have hurtig retning og sparring. Et intensivt besøg i jeres hjem, hvor vi analyserer rummene og giver konkrete forslag til indretning, farver og møbler.",
     mobileBody:"For dem der vil have hurtig retning og sparring. Et intensivt besøg i jeres hjem, hvor vi analyserer rummene og giver konkrete forslag til indretning, farver og møbler.",
     image:"/assets/service_1.webp",
@@ -12,7 +13,8 @@ const SERVICES = [
     overlay: null,
   },
   {
-    title:"Hjemmekoncept",
+    title:"Indretning og Design Service",
+    price:"Pris efter aftale",
     body:"Et skræddersyet interiørkoncept for flere rum, hvor vi skaber sammenhæng i funktion, materialer og stemning. Vi kombinerer æstetik med hverdagsflow, så rummet både føles smukt og fungerer.",
     mobileBody:"Et skræddersyet interiørkoncept for flere rum med sammenhæng i funktion, materialer og stemning, én rød tråd gennem hele hjemmet.",
     image:"/assets/service_2b.webp",
@@ -21,7 +23,8 @@ const SERVICES = [
     overlay: { src:"/assets/service_2a.webp", aspect:"4/3" },
   },
   {
-    title:"Fuldt designforløb",
+    title:"Total Interiør Design Service",
+    price:"Pris efter aftale",
     body:"Et komplet designforløb til nybyg, renovering eller totalindretning. Vi guider dig gennem alle valg, fra planløsning til farver, inventar og styling. Hele vejen sikrer vi en rød tråd, der matcher din stil og hverdagsbehov.",
     mobileBody:"Et komplet designforløb til nybyg, renovering eller totalindretning. Vi følger projektet fra første streg til færdigt hjem, inkl. plantegninger, materialevalg og koordinering.",
     image:"/assets/service_3.webp",
@@ -97,13 +100,13 @@ export default function ServicesSection() {
                   }}
                 />
                 <div className="absolute bottom-7 left-6 right-6 text-cream">
-                  <h3 className="m-0 mb-1.5 font-serif text-[25px] font-medium">
+                  <h3 className="m-0 mb-1.5 min-h-[60px] font-serif text-[25px] font-medium leading-[1.2]">
                     {s.title}
                   </h3>
                   <div className="mb-2.5 font-serif text-[17px] italic text-cream/85">
-                    Pris efter aftale
+                    {s.price}
                   </div>
-                  <p className="m-0 mb-3.5 text-[14px] font-light leading-[1.6] text-cream/90">
+                  <p className="m-0 mb-3.5 min-h-[112px] text-[14px] font-light leading-[1.6] text-cream/90">
                     {s.mobileBody}
                   </p>
                   <Link
@@ -139,14 +142,12 @@ export default function ServicesSection() {
                 )}
               </div>
               <div className="flex flex-1 flex-col bg-brown-hover px-[26px] pt-6 pb-[26px] max-md:hidden">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1.5">
-                  <h3 className="m-0 font-serif text-[28px] font-medium text-cream">
-                    {s.title}
-                  </h3>
-                  <span className="flex-none font-serif text-[21px] italic text-cream">
-                    Pris efter aftale
-                  </span>
-                </div>
+                <h3 className="m-0 font-serif text-[28px] font-medium text-cream">
+                  {s.title}
+                </h3>
+                <span className="mt-1.5 font-serif text-[21px] italic text-cream">
+                  {s.price}
+                </span>
                 <p
                   className="m-0 mt-3 text-[19px] font-light leading-[1.7] text-cream"
                   style={{ textWrap:"pretty" }}
