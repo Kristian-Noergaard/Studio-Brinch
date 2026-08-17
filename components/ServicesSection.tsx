@@ -96,13 +96,13 @@ export default function ServicesSection() {
                   className="pointer-events-none absolute inset-0"
                   style={{
                     background:
-                     "linear-gradient(180deg, rgba(20,18,14,0.05) 25%, rgba(20,18,14,0.72) 100%)",
+                     "linear-gradient(180deg, rgba(20,18,14,0.5), transparent 30%), linear-gradient(180deg, rgba(20,18,14,0.05) 25%, rgba(20,18,14,0.72) 100%)",
                   }}
                 />
+                <h3 className="absolute left-6 right-6 top-6 m-0 font-serif text-[25px] font-medium leading-[1.2] text-cream">
+                  {s.title}
+                </h3>
                 <div className="absolute bottom-7 left-6 right-6 text-cream">
-                  <h3 className="m-0 mb-1.5 min-h-[60px] font-serif text-[25px] font-medium leading-[1.2]">
-                    {s.title}
-                  </h3>
                   <div className="mb-2.5 font-serif text-[17px] italic text-cream/85">
                     {s.price}
                   </div>
